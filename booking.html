@@ -64,7 +64,29 @@ footer{padding:14px 20px 22px;border-top:1px solid var(--beige);background:#fff;
 .cta{width:100%;height:56px;border:none;border-radius:999px;background:var(--ink);color:#fff;font-size:20px;font-weight:700;cursor:pointer}
 .cta:disabled{background:var(--beige);color:var(--brown);cursor:default}
 [hidden]{display:none!important}
+
+/* Motion (skipped when the visitor asked for reduced motion) */
+.bars div{background:linear-gradient(var(--ink),var(--ink)) 0 0/0% 100% no-repeat var(--beige);transition:background-size .5s cubic-bezier(.4,0,.2,1)}
+.bars div.on{background-size:100% 100%}
+.opt,.pill{transition:border-color .2s ease,background-color .2s ease,color .2s ease,transform .15s ease}
+.opt:active,.pill:active{transform:scale(.97)}
+.cta{transition:background-color .3s ease,color .3s ease,transform .15s ease}
+.cta:not(:disabled):active{transform:scale(.98)}
+@media (hover:hover){.opt:not(.sel):hover,.pill:not(.sel):hover{border-color:var(--line)}}
+@keyframes stepIn{from{opacity:0;transform:translateX(var(--from,28px))}to{opacity:1;transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes pop{0%{opacity:0;transform:scale(.5)}60%{opacity:1;transform:scale(1.08)}100%{opacity:1;transform:none}}
+@keyframes write{from{clip-path:inset(-30% 100% -30% -5%)}to{clip-path:inset(-30% -5% -30% -5%)}}
+@keyframes draw{to{stroke-dashoffset:0}}
+.motion .enter{animation:stepIn .45s cubic-bezier(.2,.7,.2,1) both}
+.motion .enter.back{--from:-28px}
+.motion #s4.enter{animation:none}
+.motion #s4.enter > *{animation:fadeUp .6s both;animation-delay:calc(.9s + var(--i,0) * .08s)}
+.motion #s4.enter .ring{animation:pop .7s .1s both}
+.motion #s4.enter .ring path{stroke-dasharray:24;stroke-dashoffset:24;animation:draw .55s .6s ease-out forwards}
+.motion #s4.enter .script{animation:write 1.1s .75s ease-out both}
 </style>
+<script>if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion');</script>
 </head>
 <body>
 <div class="app">
@@ -170,7 +192,7 @@ footer{padding:14px 20px 22px;border-top:1px solid var(--beige);background:#fff;
       full: WD_FULL[d.getDay()] + ', ' + d.getDate() + ' ' + MON[d.getMonth()] });
   }
 
-  var s;
+  var s, shownStep = 0;
   var preSpec = new URLSearchParams(location.search).get('spec');
   function reset() { s = { step: 1, service: null, spec: find(specs, preSpec) ? preSpec : null, day: null, time: null, channel: 'tg' }; $('bk-name').value = ''; $('bk-contact').value = ''; }
   function $(id) { return document.getElementById(id); }
@@ -200,6 +222,14 @@ footer{padding:14px 20px 22px;border-top:1px solid var(--beige);background:#fff;
     [1, 2, 3, 4].forEach(function (i) { $('s' + i).hidden = s.step !== i; });
     $('back').hidden = !(s.step === 2 || s.step === 3);
     $('cta-bar').hidden = s.step === 4;
+    if (s.step !== shownStep) {
+      var sec = $('s' + s.step);
+      sec.classList.remove('enter', 'back');
+      void sec.offsetWidth;
+      sec.classList.add('enter');
+      if (s.step < shownStep) sec.classList.add('back');
+      shownStep = s.step;
+    }
 
     fill($('services'), services, function (x) {
       return button('opt' + (x.id === s.service ? ' sel' : ''), '<span class="t">' + esc(x.title) + '</span><span class="m">' + esc(x.meta) + '</span>', function () { s.service = x.id; });
@@ -229,6 +259,7 @@ footer{padding:14px 20px 22px;border-top:1px solid var(--beige);background:#fff;
     $('next').disabled = !ok();
   }
 
+  Array.prototype.forEach.call($('s4').children, function (c, i) { c.style.setProperty('--i', i); });
   $('next').addEventListener('click', function () { if (ok()) { s.step++; render(); window.scrollTo(0, 0); } });
   $('back').addEventListener('click', function () { s.step = Math.max(1, s.step - 1); render(); });
   $('restart').addEventListener('click', function () { reset(); render(); });
