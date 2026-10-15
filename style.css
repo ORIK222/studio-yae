@@ -45,8 +45,14 @@ h3{font-weight:700;line-height:1.15}
 .actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:6px}
 .hero-meta{display:flex;flex-wrap:wrap;gap:8px 24px;font-size:18px;color:var(--brown);font-weight:600;margin-top:4px}
 .hero-art{flex:1 1 380px;min-width:0;display:flex;justify-content:center}
-.frame{width:100%;border:12px solid var(--beige);border-radius:40px;padding:7px}
-.frame-inner{border:3px solid var(--ink);border-radius:30px;background:#fff}
+/* Open frame like on the printed cards: the bottom-left corner doesn't close,
+   the left side and the bottom taper off like a brush stroke */
+.frame{--bw:12px;--gap:7px;--lw:3px;--lc:var(--ink);--r:40px;--ri:30px;position:relative;width:100%;padding:calc(var(--bw) + var(--gap) + var(--lw))}
+.frame::before,.frame::after{content:"";position:absolute;pointer-events:none;
+  clip-path:polygon(0 0,100% 0,100% 100%,40% 100%,12% calc(100% - var(--w)),var(--w) 88%,0 50%)}
+.frame::before{--w:var(--bw);inset:0;border:var(--bw) solid var(--beige);border-radius:var(--r)}
+.frame::after{--w:var(--lw);inset:calc(var(--bw) + var(--gap));border:var(--lw) solid var(--lc);border-radius:var(--ri)}
+.frame-inner{position:relative}
 .hero-art .frame{max-width:440px}
 .hero-art .frame-inner{padding:48px 28px 40px;display:flex;flex-direction:column;align-items:center;gap:10px}
 
@@ -63,8 +69,8 @@ h3{font-weight:700;line-height:1.15}
 
 /* Steps */
 .steps{padding:0 24px 80px}
-.steps .frame{border-radius:44px}
-.steps .frame-inner{border-radius:34px;padding:48px 32px;display:flex;flex-direction:column;gap:32px}
+.steps .frame{--r:44px;--ri:34px}
+.steps .frame-inner{padding:48px 32px;display:flex;flex-direction:column;gap:32px}
 .step{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
 .step .n{width:64px;height:64px;border-radius:50%;background:var(--sand);display:flex;align-items:center;justify-content:center;font-family:var(--num);font-size:28px;font-weight:700}
 .step h3{font-size:25px}
@@ -83,8 +89,8 @@ h3{font-weight:700;line-height:1.15}
 .gift a{color:var(--ink)}
 .gift .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:48px}
 .gift-art{flex:1 1 320px;min-width:0;display:flex;justify-content:center}
-.gift-art .frame{max-width:360px;border-width:10px;border-radius:36px;padding:6px}
-.gift-art .frame-inner{background:transparent;border:2.5px solid #8C7A6B;border-radius:28px;padding:40px 24px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.gift-art .frame{max-width:360px;--bw:10px;--gap:6px;--lw:2.5px;--lc:#8C7A6B;--r:36px;--ri:28px}
+.gift-art .frame-inner{padding:40px 24px;display:flex;flex-direction:column;align-items:center;gap:14px}
 .gift-text{flex:1 1 460px;min-width:0;display:flex;flex-direction:column;gap:18px}
 .gift h2{color:#fff}
 .gift .opt{border:1.5px solid #8C7A6B;border-radius:18px;padding:14px 20px;display:flex;flex-direction:column}
