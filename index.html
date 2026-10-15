@@ -4,7 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Психологічна студія «Яє» — Рівне</title>
-<meta name="description" content="Психологічна допомога у Рівному — офлайн і онлайн. Індивідуальні та парні консультації, підтримка дітей і підлітків, групи й воркшопи.">
+<meta name="description" content="Психологічна студія «Яє» у Рівному: психотерапія, консультації, тренінги та психодіагностика для дітей, підлітків, дорослих, пар і сімей. Офлайн і онлайн.">
+<meta property="og:title" content="Психологічна студія «Яє» — Рівне">
+<meta property="og:description" content="Простір безпеки та турботи. Створи найкращу версію Себе.">
+<meta property="og:image" content="assets/team.jpg">
 <link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,18 +16,30 @@
 </head>
 <body>
 
-<header class="site-header">
+<a href="#event" class="strip" data-until="2026-10-18">
+  <span class="d-only"><span class="script">Запрошуємо!</span>&nbsp; День відкритих дверей — <span class="num">17</span> жовтня, <span class="num">11:00–19:00</span> · вхід вільний →</span>
+  <span class="m-only">День відкритих дверей · <span class="num">17</span> жовтня, <span class="num">11:00–19:00</span> →</span>
+</a>
+
+<header class="site-header" id="header">
   <div class="wrap">
     <a href="#top" class="brand">
       <img src="assets/logo.png" alt="Логотип студії Я-Є" width="52">
       <img src="assets/wordmark.png" alt="Психологічна студія" width="150">
     </a>
-    <nav class="site-nav" aria-label="Головне меню">
+    <a href="booking.html" class="btn header-cta m-only">Записатися</a>
+    <button type="button" class="burger" id="burger" aria-label="Відкрити меню" aria-expanded="false" aria-controls="nav">
+      <svg class="i-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1718" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="i-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1718" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <nav class="site-nav" id="nav" aria-label="Головне меню">
       <a href="#about">Про студію</a>
-      <a href="#services">Послуги</a>
-      <a href="#team">Психологи</a>
-      <a href="#gift">Сертифікати</a>
+      <a href="#services">Послуги<span class="m-only"> та ціни</span></a>
+      <a href="#team">Команда</a>
+      <a href="#event" data-until="2026-10-18">Події</a>
+      <a href="#gift" class="m-only">Сертифікати</a>
       <a href="#contacts">Контакти</a>
+      <a href="https://www.instagram.com/studio.iam.sov/" class="insta m-only">Instagram @studio.iam.sov</a>
       <a href="booking.html" class="btn">Записатися</a>
     </nav>
   </div>
@@ -34,16 +49,16 @@
   <section id="top" class="hero">
     <div class="wrap">
       <div class="hero-text">
-        <div class="script" style="font-size:34px">Простір, де можна бути собою</div>
-        <h1>Психологічна допомога у Рівному — офлайн і онлайн</h1>
-        <p class="lead">Індивідуальні та парні консультації, підтримка дітей і підлітків, групи й воркшопи. Конфіденційно, без осуду, у вашому темпі.</p>
+        <div class="script">Простір безпеки та турботи</div>
+        <h1>Психологічна студія «Яє» у Рівному</h1>
+        <p class="lead">Психотерапія, консультації, тренінги та психодіагностика для дітей, підлітків, дорослих, пар і сімей. <span class="d-only">Офлайн на Шкільній, 11 — або онлайн з будь-якого міста.</span><span class="m-only">Офлайн або онлайн.</span></p>
         <div class="actions">
           <a href="booking.html" class="btn">Записатися на консультацію</a>
           <a href="#ask" class="btn-outline">Написати анонімно</a>
         </div>
         <div class="hero-meta">
           <span>вул. Шкільна, <span class="num">11</span> · <span class="num">4</span> поверх</span>
-          <span>Перша зустріч — знайомство з фахівцем</span>
+          <span>Діти · підлітки · дорослі · пари та сім’ї</span>
         </div>
       </div>
       <div class="hero-art">
@@ -58,67 +73,83 @@
     </div>
   </section>
 
-  <section id="about" class="sand" style="padding-top:72px;padding-bottom:72px">
-    <div class="wrap stack">
-      <div class="head" style="max-width:720px">
-        <div class="script">Про студію</div>
-        <h2>Тут вас вислухають і підтримають</h2>
+  <section id="about" class="sand about">
+    <div class="wrap">
+      <div class="about-top">
+        <div class="about-photo">
+          <img src="assets/team.jpg" alt="Команда студії «Яє»" width="640" height="580">
+        </div>
+        <div class="about-text">
+          <div class="script">Про студію</div>
+          <h2>Народилися, щоб примножувати світло</h2>
+          <p>Студія відкрилася у непростий для України час — щоб підтримувати людей через щирі наміри, теплі слова, безпечний простір та екологічну взаємодію.<span class="d-only"> Ми віримо в силу кожної людини.</span></p>
+          <p>Наша мета — допомогти вам розкрити потенціал, зміцнити емоційну стійкість, навчитися керувати емоціями, будувати комфортні стосунки й відчувати радість життя.</p>
+          <div class="motto">«Разом зростаємо — разом допомагаємо зростати іншим!»</div>
+        </div>
       </div>
-      <div class="grid">
-        <div class="card">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1A1718" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
-          <h3>Конфіденційно</h3>
-          <p class="muted">Усе, що ви розповідаєте, залишається між вами і психологом. Для запису достатньо імені та контакту.</p>
+      <div class="values">
+        <div class="value">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#1A1718" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>
+          <div><h3>Прийняття себе та інших</h3><p>Без осуду — з будь-яким запитом можна прийти.</p></div>
         </div>
-        <div class="card">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1A1718" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>
-          <h3>Без осуду</h3>
-          <p class="muted">Тривога, втома, стосунки, втрата чи просто «щось не так» — з будь-яким запитом можна прийти.</p>
+        <div class="value">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#1A1718" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M9 12.5c.8 1.2 1.8 1.8 3 1.8s2.2-.6 3-1.8"/><path d="M9.5 9.5h.01M14.5 9.5h.01"/></svg>
+          <div><h3>Контакт з тілом і емоціями</h3><p>Екологічно, у вашому темпі, з опорою на ваші потреби.</p></div>
         </div>
-        <div class="card">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1A1718" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>
-          <h3>Ваш темп</h3>
-          <p class="muted">Фахівця і формат обираєте ви. Можна почати з однієї зустрічі-знайомства й вирішити, чи підходить.</p>
+        <div class="value">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#1A1718" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V11"/><path d="M12 11c0-3.5 2.5-6 6-6 0 3.5-2.5 6-6 6z"/><path d="M12 14c0-3-2.2-5-5-5 0 3 2.2 5 5 5z"/></svg>
+          <div><h3>Авторство власного життя</h3><p>Шукаємо творчий вихід зі складних ситуацій — разом.</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="services">
+  <section id="services" class="services">
     <div class="wrap stack">
-      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px">
+      <div class="services-head" style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px">
         <div class="head">
           <div class="script">Послуги та ціни</div>
-          <h2>З чим ми працюємо</h2>
+          <h2>Чим ми можемо допомогти</h2>
         </div>
-        <a href="booking.html" style="font-weight:700;font-size:20px;padding:10px 0">Обрати час онлайн →</a>
+        <a href="booking.html" class="d-only" style="font-weight:700;font-size:20px;padding:10px 0">Обрати час онлайн →</a>
       </div>
-      <div class="grid" style="gap:20px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))">
+      <div class="svc-grid">
         <div class="svc">
-          <h3>Індивідуальна консультація</h3>
-          <p>Тривога, стрес, самооцінка, вигорання, кризи та рішення.</p>
-          <div class="price"><span>50 хв</span><span>[ЦІНА] грн</span></div>
+          <div class="svc-head"><h3>Індивідуальна консультація</h3><span class="cost m-only">900 грн</span></div>
+          <p>Тривога, стрес, самооцінка, вигорання, кризи, складні рішення.</p>
+          <div class="price"><span class="time">50 хв<span class="m-only"> · офлайн або онлайн</span></span><span class="cost d-only">900 грн</span></div>
         </div>
         <div class="svc">
-          <h3>Парна та сімейна</h3>
-          <p>Конфлікти, криза довіри, розлучення, батьківство.</p>
-          <div class="price"><span>80 хв</span><span>[ЦІНА] грн</span></div>
+          <div class="svc-head"><h3>Пари та сім’ї</h3><span class="cost m-only">1300 грн</span></div>
+          <p>Конфлікти, криза довіри, розлучення, батьківство, стосунки поколінь.</p>
+          <div class="price"><span class="time">80 хв<span class="m-only"> · офлайн або онлайн</span></span><span class="cost d-only">1300 грн</span></div>
         </div>
         <div class="svc">
-          <h3>Діти та підлітки</h3>
+          <div class="svc-head"><h3>Діти, підлітки, юнаки</h3><span class="cost m-only">800 грн</span></div>
           <p>Адаптація, страхи, навчання, стосунки з однолітками; консультації для батьків.</p>
-          <div class="price"><span>50 хв</span><span>[ЦІНА] грн</span></div>
+          <div class="price"><span class="time">50 хв</span><span class="cost d-only">800 грн</span></div>
         </div>
         <div class="svc">
-          <h3>Групи та воркшопи</h3>
-          <p>Тематичні зустрічі, групи підтримки, психологічні ігри.</p>
-          <div class="price"><span>розклад у Telegram</span><span>від [ЦІНА] грн</span></div>
+          <div class="svc-head"><h3>Групова психотерапія</h3><span class="cost m-only">450 грн</span></div>
+          <p>Невеликі групи до 8 людей: підтримка, досвід інших, безпечне коло.</p>
+          <div class="price"><span class="time">120 хв<span class="m-only"> · до 8 людей</span></span><span class="cost d-only">450 грн</span></div>
+        </div>
+        <div class="svc">
+          <div class="svc-head"><h3>Психодіагностика</h3><span class="cost m-only">700 грн</span></div>
+          <p>Індивідуальна та групова: особистість, емоційний стан, профорієнтація.</p>
+          <div class="price"><span class="time">60 хв</span><span class="cost d-only">700 грн</span></div>
+        </div>
+        <div class="svc">
+          <div class="svc-head"><h3>Тренінги та воркшопи</h3><span class="cost m-only">від 350 грн</span></div>
+          <p>Соціально-психологічні тренінги, майстер-класи, мастермайнди, творчі зустрічі.</p>
+          <div class="price"><span class="time">розклад в Instagram</span><span class="cost d-only">від 350 грн</span></div>
         </div>
       </div>
       <div class="note">
         <span class="num">Онлайн</span>
-        <span class="muted">Усі індивідуальні консультації можна провести відеозв'язком — з будь-якого міста.</span>
+        <span class="muted"><span class="m-only"> — </span>Будь-яку індивідуальну чи парну консультацію можна провести відеозв'язком<span class="d-only"> — ціна та сама</span>.</span>
       </div>
+      <a href="booking.html" class="btn m-only">Обрати час онлайн</a>
     </div>
   </section>
 
@@ -129,45 +160,91 @@
           <div class="script">Без дзвінків і переписок</div>
           <h2 style="font-size:44px">Записатися — за хвилину</h2>
         </div>
-        <div class="grid" style="gap:28px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
-          <div class="step"><div class="n">1</div><h3>Оберіть послугу і фахівця</h3><p class="muted">Видно, хто з психологів із чим працює.</p></div>
-          <div class="step"><div class="n">2</div><h3>Виберіть вільний час</h3><p class="muted">Розклад оновлюється автоматично.</p></div>
-          <div class="step"><div class="n">3</div><h3>Отримайте нагадування</h3><p class="muted">У Telegram або Viber за день до зустрічі.</p></div>
+        <div class="steps-list">
+          <div class="step"><span class="n">1</span><div><h3>Оберіть послугу і фахівця</h3><p class="muted">Видно, хто з психологів із ким працює.</p></div></div>
+          <div class="step"><span class="n">2</span><div><h3>Виберіть вільний час</h3><p class="muted">Офлайн на Шкільній або онлайн.</p></div></div>
+          <div class="step"><span class="n">3</span><div><h3>Отримайте нагадування</h3><p class="muted">У Telegram або Viber за день до зустрічі.</p></div></div>
         </div>
-        <div style="display:flex;justify-content:center">
+        <div class="center" style="display:flex;justify-content:center">
           <a href="booking.html" class="btn" style="padding:16px 34px">Обрати час</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="team" class="sand">
+  <section id="team" class="sand team">
     <div class="wrap stack">
       <div class="head">
         <div class="script">Команда</div>
         <h2>Наші психологи</h2>
+        <span class="m-only" style="font-size:16px;color:#6E5D4E;font-weight:600">Гортайте вбік →</span>
       </div>
-      <div class="grid">
-        <div class="person">
-          <div class="avatar"><div>[ФОТО]</div></div>
-          <h3>[Ім'я Прізвище]</h3>
-          <div class="role">[Напрям · підхід, напр. КПТ]</div>
-          <p>[Досвід, з якими запитами працює — 1–2 речення]</p>
-          <a href="booking.html">Записатися до фахівця</a>
+
+      <div class="psy-list">
+        <div class="person founder">
+          <div class="avatar"><img src="assets/olena.jpg" alt="Олена Сторож" width="210" height="210"></div>
+          <div class="info">
+            <div class="badge">Засновниця студії</div>
+            <h3>Олена Сторож</h3>
+            <div class="role">Кандидатка психологічних наук, доцентка, психотерапевтка, тренерка</div>
+            <p class="bio">З 17 років вивчає психологію. Великий досвід роботи з молоддю у виші та тривала приватна практика. Психотерапію сприймає як «дизайн» внутрішнього світу людини — допомагає створити найкращу версію себе.</p>
+            <div class="row">
+              <span class="pill-tag">Діти · <span class="d-only">підлітки · юнаки · </span>дорослі · пари та сім’ї</span>
+              <a href="booking.html?spec=a" class="cta">Записатися<span class="d-only"> до Олени</span></a>
+            </div>
+          </div>
         </div>
         <div class="person">
-          <div class="avatar"><div>[ФОТО]</div></div>
-          <h3>[Ім'я Прізвище]</h3>
-          <div class="role">[Напрям · підхід]</div>
-          <p>[Досвід, з якими запитами працює — 1–2 речення]</p>
-          <a href="booking.html">Записатися до фахівця</a>
+          <div class="avatar"><img src="assets/ilona-klymchuk.jpg" alt="Ілона Климчук" width="220" height="220"></div>
+          <div class="badge m-only"></div>
+          <h3>Ілона Климчук</h3>
+          <div class="role">Клінічна психологиня, викладачка психології, тренерка</div>
+          <span class="pill-tag">Діти · дорослі</span>
+          <a href="booking.html?spec=b" class="cta">Записатися<span class="d-only"> до Ілони</span></a>
         </div>
         <div class="person">
-          <div class="avatar"><div>[ФОТО]</div></div>
-          <h3>[Ім'я Прізвище]</h3>
-          <div class="role">[Напрям · підхід]</div>
-          <p>[Досвід, з якими запитами працює — 1–2 речення]</p>
-          <a href="booking.html">Записатися до фахівця</a>
+          <div class="avatar"><img src="assets/anastasiia.jpg" alt="Анастасія Поліщук" width="205" height="205"></div>
+          <div class="badge m-only"></div>
+          <h3>Анастасія Поліщук</h3>
+          <div class="role">Практикуюча психологиня, викладачка психології, тренерка</div>
+          <span class="pill-tag">Діти · підлітки</span>
+          <a href="booking.html?spec=c" class="cta">Записатися<span class="d-only"> до Анастасії</span></a>
+        </div>
+      </div>
+
+      <div class="crew">
+        <h3>А ще — ті, хто робить студію затишною</h3>
+        <div class="crew-list">
+          <div class="crew-item"><img src="assets/nadiia.jpg" alt="Надія Полховська"><div><b>Надія Полховська</b><span>Дизайнерка</span></div></div>
+          <div class="crew-item"><img src="assets/ilona-kochakova.jpg" alt="Ілона Кочакова"><div><b>Ілона Кочакова</b><span>SMM і сайти</span></div></div>
+          <div class="crew-item"><img src="assets/solomiia.jpg" alt="Соломія Пилипчук"><div><b>Соломія Пилипчук</b><span>Переклад англійською</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="event" class="event" data-until="2026-10-18">
+    <div class="frame">
+      <div class="frame-inner">
+        <div class="cal" aria-label="17 жовтня, субота, 11:00–19:00">
+          <div class="m">ЖОВТЕНЬ</div>
+          <div class="d">17</div>
+          <div class="w">субота · 11:00–19:00</div>
+        </div>
+        <div class="event-text">
+          <div class="script">Запрошуємо на</div>
+          <h2>ДЕНЬ ВІДКРИТИХ ДВЕРЕЙ</h2>
+          <ul class="program">
+            <li>знайомство з командою</li>
+            <li>наші цінності й напрями роботи</li>
+            <li>обговорення ваших запитів</li>
+            <li>частування, фото та відео</li>
+          </ul>
+          <div class="addr">вул. Шкільна, <span class="num">11</span>, <span class="num">4</span> поверх <i>— по коридору останні двері праворуч</i></div>
+          <div class="ev-actions" style="display:flex;flex-wrap:wrap;gap:14px;margin-top:4px">
+            <a href="#contacts" class="btn" style="padding:14px 28px;font-size:20px">Як нас знайти</a>
+            <span class="bye">До зустрічі!</span>
+          </div>
         </div>
       </div>
     </div>
@@ -179,19 +256,19 @@
         <div class="frame">
           <div class="frame-inner">
             <img src="assets/logo-light.png" alt="Логотип студії Я-Є" width="110">
-            <div class="script" style="font-size:34px;color:#E8DACC">Подарунковий</div>
-            <div style="font-size:38px;font-weight:600;letter-spacing:.08em;line-height:1">СЕРТИФІКАТ</div>
+            <div class="script">Подарунковий</div>
+            <div class="title">СЕРТИФІКАТ</div>
           </div>
         </div>
       </div>
       <div class="gift-text">
         <h2>Подаруйте турботу про себе</h2>
-        <p style="font-size:22px;color:#E8DACC">Сертифікат на індивідуальну консультацію або психологічний захід. Діє 3 місяці, можна обрати колір картки.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:12px">
-          <div class="opt"><b>Консультація</b><span>[ЦІНА] грн</span></div>
-          <div class="opt"><b>Психологічний захід</b><span>[ЦІНА] грн</span></div>
+        <p>Сертифікат на індивідуальну консультацію або психологічний захід. Діє 3 місяці, можна обрати колір картки<span class="d-only">: бежевий, зелений, сірий, блакитний чи персиковий</span>.</p>
+        <div class="gift-opts">
+          <div class="opt"><b>Консультація</b><span>900 грн</span></div>
+          <div class="opt"><b><span class="d-only">Психологічний з</span><span class="m-only">З</span>ахід</b><span>від 350 грн</span></div>
         </div>
-        <div style="margin-top:6px"><a href="#contacts" class="btn-light">Замовити сертифікат</a></div>
+        <div><a href="#ask" class="btn-light">Замовити сертифікат</a></div>
       </div>
     </div>
   </section>
@@ -201,8 +278,8 @@
       <div class="ask-text">
         <div class="script">Важко подзвонити?</div>
         <h2>Напишіть нам анонімно</h2>
-        <p class="muted" style="font-size:22px">Коротко опишіть, що вас турбує, — адміністратор підбере фахівця і напише туди, куди вам зручно. Можна вказати лише псевдонім.</p>
-        <div class="privacy">
+        <p class="muted"><span class="d-only">Коротко опишіть, що вас турбує, — а</span><span class="m-only">А</span>дміністратор підбере фахівця і напише туди, куди вам зручно. Можна вказати лише псевдонім.</p>
+        <div class="privacy d-only">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1A1718" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"/></svg>
           <span>Повідомлення бачить лише адміністратор студії. Ми не передаємо дані третім особам.</span>
         </div>
@@ -210,22 +287,26 @@
       <form class="ask" id="ask-form">
         <div class="field">
           <label for="ask-name">Як до вас звертатися</label>
-          <input id="ask-name" name="name" type="text" placeholder="Ім'я або псевдонім" required>
+          <input id="ask-name" name="name" type="text" placeholder="Ім'я або псевдонім" autocomplete="nickname" required>
         </div>
         <div class="field">
           <label for="ask-contact">Telegram, Viber або телефон</label>
           <input id="ask-contact" name="contact" type="text" placeholder="@nickname або +380…" required>
         </div>
         <div class="field">
-          <label for="ask-text">Що вас турбує <span style="font-weight:500;color:#6E5D4E">(необов'язково)</span></label>
+          <label for="ask-text">Що вас турбує <span>(необов'язково)</span></label>
           <textarea id="ask-text" name="message" rows="4" placeholder="Кілька слів — цього достатньо"></textarea>
         </div>
         <label class="check">
           <input type="checkbox" required>
           <span>Погоджуюся на обробку персональних даних відповідно до <a href="#privacy">політики конфіденційності</a></span>
         </label>
-        <button type="submit" class="btn" style="height:56px">Надіслати</button>
+        <button type="submit" class="btn">Надіслати</button>
         <div class="form-ok" id="ask-ok" hidden>Дякуємо! Адміністратор напише вам найближчим часом.</div>
+        <div class="safe-note m-only">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1718" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"/></svg>
+          <span>Повідомлення бачить лише адміністратор студії.</span>
+        </div>
       </form>
     </div>
   </section>
@@ -235,20 +316,20 @@
       <div class="info">
         <div class="script">Контакти</div>
         <h2>Як нас знайти</h2>
-        <div style="display:flex;flex-direction:column;gap:4px">
-          <div style="font-size:24px;font-weight:700">м. Рівне, вул. Шкільна, <span class="num">11</span>, <span class="num">4</span> поверх</div>
-          <div style="font-style:italic" class="muted">по коридору — останні двері праворуч</div>
+        <div class="where">
+          <b>м. Рівне, вул. Шкільна, <span class="num">11</span>, <span class="num">4</span> поверх</b>
+          <i>по коридору — останні двері праворуч</i>
         </div>
         <div class="kv">
-          <div><span>Телефон</span><b>[+380 XX XXX XX XX]</b></div>
-          <div><span>Години роботи</span><b>[Пн–Сб, 10:00–20:00]</b></div>
-          <div><span>Telegram</span><a href="#contacts">[@studio_yae]</a></div>
-          <div><span>Viber</span><a href="#contacts">[спільнота Студії «Яє»]</a></div>
+          <a href="tel:+380971171111"><span><span class="d-only">Телефон</span><span class="m-only">Подзвонити</span></span><b class="num">+380 97 117 11 11</b></a>
+          <a href="https://t.me/studio_yae_rivne"><span>Telegram</span><b>@studio_yae_rivne</b></a>
+          <a href="https://www.instagram.com/studio.iam.sov/"><span>Instagram</span><b>@studio.iam.sov</b></a>
+          <div><span>Години роботи</span><b>Пн–Сб, <span class="num">10:00–20:00</span></b></div>
         </div>
       </div>
       <div class="map">
-        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#6E5D4E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.6-6-11a6 6 0 0 1 12 0c0 5.4-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>
-        <span>[Карта Google Maps]</span>
+        <iframe title="Карта: Рівне, вул. Шкільна, 11" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=%D0%A0%D1%96%D0%B2%D0%BD%D0%B5%2C%20%D0%B2%D1%83%D0%BB.%20%D0%A8%D0%BA%D1%96%D0%BB%D1%8C%D0%BD%D0%B0%2C%2011&z=16&output=embed"></iframe>
+        <a href="https://maps.google.com/?q=%D0%A0%D1%96%D0%B2%D0%BD%D0%B5%2C%20%D0%B2%D1%83%D0%BB.%20%D0%A8%D0%BA%D1%96%D0%BB%D1%8C%D0%BD%D0%B0%2C%2011" target="_blank" rel="noopener">Прокласти маршрут →</a>
       </div>
     </div>
   </section>
@@ -256,19 +337,37 @@
 
 <footer id="privacy" class="site-footer">
   <div class="wrap">
-    <div style="display:flex;align-items:center;gap:14px">
+    <div class="brand-line">
       <img src="assets/logo.png" alt="Логотип студії Я-Є" width="44">
-      <span>© <span class="num">2026</span> Психологічна студія «Яє»</span>
+      <span>© <span class="num">2026</span> Психологічна студія «Яє»<span class="d-only"> · Створи найкращу версію Себе</span></span>
     </div>
     <div class="links">
       <a href="#privacy">Політика конфіденційності</a>
-      <a href="#gift">Сертифікати</a>
+      <a href="https://www.instagram.com/studio.iam.sov/" class="d-only">Instagram</a>
       <a href="booking.html">Онлайн-запис</a>
     </div>
   </div>
 </footer>
 
 <script>
+  // Mobile menu
+  var header = document.getElementById('header');
+  var burger = document.getElementById('burger');
+  function setMenu(open) {
+    header.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open);
+    burger.setAttribute('aria-label', open ? 'Закрити меню' : 'Відкрити меню');
+  }
+  burger.addEventListener('click', function () { setMenu(!header.classList.contains('menu-open')); });
+  document.querySelectorAll('#nav a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+
+  // Hide the open-day announcement once the event is over
+  var today = new Date().toISOString().slice(0, 10);
+  document.querySelectorAll('[data-until]').forEach(function (el) {
+    if (today >= el.getAttribute('data-until')) el.remove();
+  });
+
+  // Anonymous request form (not sent anywhere yet)
   document.getElementById('ask-form').addEventListener('submit', function (e) {
     e.preventDefault();
     this.querySelector('button[type=submit]').hidden = true;

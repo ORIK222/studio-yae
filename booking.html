@@ -35,7 +35,7 @@ main{flex-grow:1;padding:20px}
 .opt .t{font-size:21px;font-weight:700;line-height:1.15}
 .opt .m{font-size:16px;color:var(--brown);font-weight:600}
 .spec{flex-direction:row;align-items:center;gap:12px;padding:10px 12px;border-radius:16px}
-.spec .av{width:44px;height:44px;border-radius:50%;background:var(--sand);border:2px solid var(--beige);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.spec .av{width:48px;height:48px;border-radius:50%;border:2px solid var(--beige);object-fit:cover;display:block;flex-shrink:0}
 .spec .t{font-size:19px}
 .spec .m{font-size:15px}
 .days{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
@@ -138,15 +138,16 @@ footer{padding:14px 20px 22px;border-top:1px solid var(--beige);background:#fff;
 <script>
 (function () {
   var services = [
-    { id: 'ind', title: 'Індивідуальна консультація', meta: '50 хв · [ЦІНА] грн' },
-    { id: 'pair', title: 'Парна або сімейна', meta: '80 хв · [ЦІНА] грн' },
-    { id: 'kids', title: 'Дитячий і підлітковий психолог', meta: '50 хв · [ЦІНА] грн' },
-    { id: 'online', title: 'Онлайн-консультація', meta: '50 хв · відеозв’язок · [ЦІНА] грн' }
+    { id: 'ind', title: 'Індивідуальна консультація', meta: '50 хв · 900 грн' },
+    { id: 'pair', title: 'Пари та сім’ї', meta: '80 хв · 1300 грн' },
+    { id: 'kids', title: 'Діти, підлітки, юнаки', meta: '50 хв · 800 грн' },
+    { id: 'diag', title: 'Психодіагностика', meta: '60 хв · 700 грн' },
+    { id: 'online', title: 'Онлайн-консультація', meta: '50 хв · відеозв’язок · 900 грн' }
   ];
   var specs = [
-    { id: 'a', name: '[Ім’я Прізвище]', role: '[Тривога, стрес, самооцінка]' },
-    { id: 'b', name: '[Ім’я Прізвище]', role: '[Пари та сім’ї]' },
-    { id: 'c', name: '[Ім’я Прізвище]', role: '[Діти та підлітки]' }
+    { id: 'a', name: 'Олена Сторож', role: 'Діти, дорослі, пари та сім’ї', photo: 'assets/olena.jpg' },
+    { id: 'b', name: 'Ілона Климчук', role: 'Діти, дорослі', photo: 'assets/ilona-klymchuk.jpg' },
+    { id: 'c', name: 'Анастасія Поліщук', role: 'Діти, підлітки', photo: 'assets/anastasiia.jpg' }
   ];
   var times = ['10:00', '11:30', '13:00', '15:00', '16:30', '18:00'];
   var channels = [
@@ -170,7 +171,8 @@ footer{padding:14px 20px 22px;border-top:1px solid var(--beige);background:#fff;
   }
 
   var s;
-  function reset() { s = { step: 1, service: null, spec: null, day: null, time: null, channel: 'tg' }; $('bk-name').value = ''; $('bk-contact').value = ''; }
+  var preSpec = new URLSearchParams(location.search).get('spec');
+  function reset() { s = { step: 1, service: null, spec: find(specs, preSpec) ? preSpec : null, day: null, time: null, channel: 'tg' }; $('bk-name').value = ''; $('bk-contact').value = ''; }
   function $(id) { return document.getElementById(id); }
   function find(list, id) { return list.filter(function (x) { return x.id === id; })[0]; }
   function el(tag, cls, html) { var e = document.createElement(tag); e.className = cls; if (html != null) e.innerHTML = html; return e; }
@@ -202,9 +204,8 @@ footer{padding:14px 20px 22px;border-top:1px solid var(--beige);background:#fff;
     fill($('services'), services, function (x) {
       return button('opt' + (x.id === s.service ? ' sel' : ''), '<span class="t">' + esc(x.title) + '</span><span class="m">' + esc(x.meta) + '</span>', function () { s.service = x.id; });
     });
-    var avatar = '<span class="av"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6E5D4E" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg></span>';
     fill($('specs'), specs, function (x) {
-      return button('opt spec' + (x.id === s.spec ? ' sel' : ''), avatar + '<span style="display:flex;flex-direction:column"><span class="t">' + esc(x.name) + '</span><span class="m">' + esc(x.role) + '</span></span>', function () { s.spec = x.id; });
+      return button('opt spec' + (x.id === s.spec ? ' sel' : ''), '<img class="av" src="' + x.photo + '" alt=""><span style="display:flex;flex-direction:column"><span class="t">' + esc(x.name) + '</span><span class="m">' + esc(x.role) + '</span></span>', function () { s.spec = x.id; });
     });
     $('month').textContent = MON_NOM[days[0].m] + (days[5].m !== days[0].m ? ' – ' + MON_NOM[days[5].m] : '');
     fill($('days'), days, function (x) {
