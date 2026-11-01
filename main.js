@@ -1,10 +1,13 @@
 /* ================= Settings — change here =================
-   formEndpoint: address of a form service (Web3Forms, Formspree…). While it is
-   empty, a form opens a ready e-mail to the studio in the visitor's mail app.
-   formKey: the service's access key, if it needs one (Web3Forms does). */
+   formEndpoint: the form service that forwards requests to the studio's e-mail.
+   FormSubmit needs no account: the very first request sends an activation
+   letter to the address below; once someone clicks the link in it, every form
+   arrives in that inbox. Until then (or if the service is down) a form opens a
+   ready e-mail to the studio in the visitor's mail app instead.
+   formKey: only for services that need an access key (e.g. Web3Forms). */
 var CONFIG = {
   email: 'studioiamm8@gmail.com',
-  formEndpoint: '',
+  formEndpoint: 'https://formsubmit.co/ajax/studioiamm8@gmail.com',
   formKey: ''
 };
 
@@ -223,8 +226,17 @@ var CONFIG = {
     fetch(CONFIG.formEndpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({ access_key: CONFIG.formKey || undefined, subject: subject, from_name: 'Сайт студії «Яє»', message: body })
-    }).then(function (r) { if (r.ok) done(false); else mail(); }).catch(mail).then(function () { btn.disabled = false; });
+      body: JSON.stringify({
+        access_key: CONFIG.formKey || undefined,
+        subject: subject, _subject: subject, _template: 'box', _captcha: 'false',
+        from_name: 'Сайт студії «Яє»', message: body
+      })
+    }).then(function (r) {
+      // FormSubmit answers 200 with success "false" until the inbox is activated
+      return r.json().catch(function () { return {}; }).then(function (j) {
+        if (r.ok && j.success !== false && j.success !== 'false') done(false); else mail();
+      });
+    }).catch(mail).then(function () { btn.disabled = false; });
   }
 
   $('book-form').addEventListener('submit', function (e) {
@@ -236,6 +248,7 @@ var CONFIG = {
       line(label(f, 'format'), selectText(f.elements.format)),
       line(label(f, 'name'), val(f, 'name')),
       line(label(f, 'contact'), val(f, 'contact')),
+      line('Email', val(f, 'email')),
       line(en() ? 'Contact via' : 'Зв’язок через', chosenText(f, 'channel')),
       line(en() ? 'Reminder the day before' : 'Нагадування напередодні', f.elements.remind.checked ? (en() ? 'yes' : 'так') : (en() ? 'no' : 'ні')),
       line(label(f, 'comment'), val(f, 'comment'))
