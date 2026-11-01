@@ -131,8 +131,9 @@ var CONFIG = {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
         var el = e.target;
+        // A block can be both a frame and a reveal (service cards, the anonymous form): do both
         if (el.classList.contains('frame')) el.classList.add('drawn');
-        else {
+        if (el.classList.contains('rv')) {
           el.style.setProperty('--d', Math.min(n++ * .09, .45) + 's');
           el.classList.add('in');
         }
