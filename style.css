@@ -218,10 +218,10 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 .more-body ul{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:4px}
 .principles{margin:0;padding:0;list-style:none;counter-reset:p;display:flex;flex-direction:column;gap:14px}
 .principles li{counter-increment:p;display:grid;grid-template-columns:44px 1fr;column-gap:12px}
-.principles li::before{content:counter(p);grid-row:1/3;width:40px;height:40px;border-radius:50%;background:#fff;box-shadow:var(--depth-s);display:flex;align-items:center;justify-content:center;font-family:var(--num);font-weight:700;font-size:18px;color:var(--ink)}
+.principles li::before{content:counter(p);grid-row:1/3;width:40px;height:40px;border-radius:50%;background:var(--sand);box-shadow:var(--depth-s);display:flex;align-items:center;justify-content:center;font-family:var(--num);font-weight:700;font-size:18px;color:var(--ink)}
 .principles b{color:var(--ink);font-size:21px}
 .studio-why{font-size:20px!important}
-.quote{background:#fff;border-radius:26px;padding:28px 30px;box-shadow:var(--depth);display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.quote{background:var(--sand);border-radius:26px;padding:28px 30px;box-shadow:var(--depth);display:flex;flex-direction:column;gap:10px;margin-top:6px}
 .quote figcaption{font-size:28px}
 .quote blockquote{font-size:28px;line-height:1.3;font-weight:600;font-style:italic}
 .quote cite{font-style:italic;color:var(--brown);font-weight:600}
@@ -231,7 +231,7 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 .services-head img{width:240px;margin-top:6px}
 .svc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
 .svc{display:flex}
-.svc .frame-inner{width:100%;height:100%;background:#FBF8F4;border-radius:26px;box-shadow:var(--depth);padding:28px 26px 24px;display:flex;flex-direction:column;gap:10px}
+.svc .frame-inner{width:100%;height:100%;background:#fff;border-radius:26px;box-shadow:var(--depth);padding:28px 26px 24px;display:flex;flex-direction:column;gap:10px}
 .svc-label{font-family:var(--script);font-size:22px;color:var(--brown);line-height:1}
 .svc h3{font-size:27px}
 .svc-lead{color:var(--text);font-size:19px}
@@ -243,7 +243,7 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 .svc details p{font-size:18px;color:var(--text);padding:6px 0 4px}
 .audience{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px}
 .audience .script{font-size:26px;margin-right:4px}
-.audience .pill-tag{background:var(--sand)}
+.audience .pill-tag{background:#fff}
 .svc-book{font-weight:700;text-decoration:none;border-top:1px solid var(--beige);padding-top:12px;margin-top:6px}
 .svc details + .svc-book{margin-top:6px}
 
@@ -329,7 +329,7 @@ form.ask .btn{height:56px}
 
 /* ---------- 15. Contacts ---------- */
 .contacts-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
-.contact-card,.social-wall{background:#fff;border-radius:28px;padding:30px;box-shadow:var(--depth)}
+.contact-card,.social-wall{background:var(--sand);border-radius:28px;padding:30px;box-shadow:var(--depth)}
 .contact-card{display:flex;flex-direction:column;gap:20px}
 .c-row{display:flex;align-items:flex-start;gap:14px}
 .c-row svg{flex-shrink:0;color:var(--brown);margin-top:2px}
