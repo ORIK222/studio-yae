@@ -123,7 +123,7 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
 .studio-card{display:flex;flex-direction:column;gap:22px;max-width:440px;justify-self:center;width:100%}
 .studio-card img{width:100%;aspect-ratio:1/1.08;object-fit:cover;object-position:50% 12%;border-radius:32px;box-shadow:var(--depth)}
-.studio-info{display:flex;flex-direction:column;gap:10px;font-size:20px;font-weight:600}
+.studio-info{display:flex;flex-direction:column;gap:10px;font-size:20px;font-weight:600;margin-top:10px;padding-top:22px;border-top:1px solid var(--beige)}
 .studio-info a{display:flex;align-items:center;gap:12px;text-decoration:none}
 .studio-info svg{flex-shrink:0;color:var(--brown)}
 
