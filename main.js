@@ -279,22 +279,3 @@ var CONFIG = {
     ], 'cert-fields', 'cert-ok');
   });
 })();
-
-/* ---------- Version switch (palette before / after edits) ---------- */
-(function () {
-  var html = document.documentElement;
-  var btns = document.querySelectorAll('.vswitch button');
-  function mark() {
-    var v = html.classList.contains('v2') ? '2' : '1';
-    btns.forEach(function (b) { b.classList.toggle('on', b.dataset.v === v); b.setAttribute('aria-pressed', b.dataset.v === v); });
-  }
-  btns.forEach(function (b) {
-    b.addEventListener('click', function () {
-      html.classList.toggle('v2', b.dataset.v === '2');
-      try { localStorage.setItem('yae_v', b.dataset.v); } catch (e) {}
-      var u = new URL(location.href); u.searchParams.set('v', b.dataset.v); history.replaceState(null, '', u);
-      mark();
-    });
-  });
-  mark();
-})();

@@ -561,25 +561,3 @@ form.ask .btn{height:56px}
 @media (max-width:860px){
   .motion .menu-open .site-nav{animation:menuIn .35s ease both}
 }
-
-/* ================= Version switch: "з правками" (html.v2) — softer, unified warm palette ================= */
-html.v2{--ink:#3B302A;--sand:#F3E9DF;--sage:#EDE3D7;--sage-d:#8A6F5A;--orange:#B98A6A;--orange-d:#A27455}
-html.v2 .btn{background:#5B4A3E}
-html.v2 .btn:hover{background:#7A6555}
-html.v2 .btn-orange{background:var(--orange)}
-html.v2 .btn-orange:hover{background:var(--orange-d)}
-html.v2 #values{--bg:url('assets/land-lake-pastel.jpg') !important}
-html.v2 #heart{--bg:url('assets/land-mountains-pastel.jpg') !important}
-html.v2 .land::before{background:linear-gradient(180deg,rgba(255,250,244,.30),rgba(255,250,244,.05) 40%,rgba(255,250,244,.25))}
-html.v2 .land .head .script{color:var(--ink);text-shadow:0 1px 14px rgba(255,250,244,.9)}
-html.v2 .value{box-shadow:0 14px 32px rgba(80,65,50,.14)}
-html.v2 .square{box-shadow:0 18px 32px -10px rgba(80,65,50,.28),0 4px 10px rgba(80,65,50,.08)}
-html.v2 .gift{background:linear-gradient(160deg,#FAF4EE 0%,#F3E7DB 50%,#EEDDCC 100%)}
-html.v2 .cert-order{box-shadow:0 20px 50px rgba(90,70,50,.12)}
-html.v2 .hero video{filter:saturate(.75) brightness(1.04)}
-
-.vswitch{position:fixed;left:16px;bottom:16px;z-index:90;display:flex;background:#fff;border:1.5px solid var(--beige);border-radius:999px;padding:4px;box-shadow:0 8px 24px rgba(26,23,24,.16);font-family:var(--serif)}
-.vswitch button{border:0;background:none;border-radius:999px;padding:8px 14px;font:700 16px/1 var(--serif);color:var(--brown);cursor:pointer}
-.vswitch button.on{background:var(--ink);color:#fff}
-html.intro-on .vswitch{display:none}
-@media print{.vswitch{display:none}}
