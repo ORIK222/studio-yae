@@ -3,6 +3,8 @@
   --sage:#E3EAD9; --sage-d:#5F6E52; --mist:#E2E9EE; --orange:#E07A2E; --orange-d:#C9661D;
   /* Depth: every photo and card sits on the page with a soft, deep shadow */
   --depth:0 26px 50px -18px rgba(70,52,36,.42),0 10px 20px -8px rgba(70,52,36,.16);
+  /* Photos sit deeper than cards: a longer, darker shadow underneath */
+  --depth-photo:0 60px 80px -28px rgba(58,40,26,.66),0 26px 40px -16px rgba(58,40,26,.38),0 6px 12px rgba(58,40,26,.1);
   --depth-s:0 16px 32px -14px rgba(70,52,36,.36),0 6px 12px -6px rgba(70,52,36,.14);
   --serif:'Cormorant Garamond', Georgia, serif;
   --num:'Playfair Display', Georgia, serif;
@@ -122,7 +124,7 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 .about-text p{font-size:22px;color:var(--text)}
 .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
 .studio-card{display:flex;flex-direction:column;gap:22px;max-width:420px;justify-self:center;width:100%}
-.studio-card img{width:100%;aspect-ratio:3/4.1;object-fit:cover;object-position:50% 34%;border-radius:32px;box-shadow:var(--depth)}
+.studio-card img{width:100%;aspect-ratio:3/4.1;object-fit:cover;object-position:50% 34%;border-radius:32px;box-shadow:var(--depth-photo)}
 .studio-info{display:flex;flex-direction:column;gap:10px;font-size:20px;font-weight:600;margin-top:10px;padding-top:22px;border-top:1px solid var(--beige)}
 .studio-info a{display:flex;align-items:center;gap:12px;text-decoration:none}
 .studio-info svg{flex-shrink:0;color:var(--brown)}
@@ -132,7 +134,7 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 .story-photo{position:relative;isolation:isolate;padding:0 0 22px 22px}
 .story-photo::before{content:"";position:absolute;left:0;bottom:0;right:22px;top:22px;border:2.5px solid var(--beige);border-radius:30px;z-index:-1}
 /* Full original photo, cropped only at the bottom: heads stay whole */
-.story-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 0;border-radius:30px;box-shadow:var(--depth)}
+.story-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 0;border-radius:30px;box-shadow:var(--depth-photo)}
 .story-text{display:flex;flex-direction:column;gap:18px}
 .story-text p{font-size:21px;color:var(--text)}
 .motto{font-family:var(--script);font-size:30px;line-height:1.2;margin-top:4px}
@@ -202,7 +204,7 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 .founder-sec{position:relative;overflow:hidden;isolation:isolate}
 .watermark{position:absolute;right:-60px;bottom:-40px;width:520px;opacity:.13;z-index:-1;pointer-events:none}
 .founder-photo{position:sticky;top:110px;display:flex;flex-direction:column;align-items:center;gap:8px}
-.founder-img{width:100%;max-width:420px;border-radius:30px;box-shadow:var(--depth)}
+.founder-img{width:100%;max-width:420px;border-radius:30px;box-shadow:var(--depth-photo)}
 .founder-copy{display:flex;flex-direction:column;gap:18px}
 .founder-copy > p{font-size:21px;color:var(--text)}
 .hello{font-family:var(--script);font-weight:400;font-size:52px;line-height:1.1}
