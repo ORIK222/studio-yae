@@ -181,27 +181,20 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 .crew-role{font-family:var(--script);font-size:24px;line-height:1.1;color:var(--brown)}
 .crew-item p{font-size:18px;color:var(--text);line-height:1.35}
 
-/* ---------- 8. Floating squares ---------- */
+/* ---------- 8. Хто ми ---------- */
 .heart-sec{background:#fff}
-/* The studio's three paintings hung side by side: the ribbon runs from one canvas to the next */
-.triptych{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;max-width:1000px;margin:0 auto 18px;width:100%;align-items:start}
-.canvas{margin:0;border-radius:4px;overflow:hidden;box-shadow:0 34px 60px -22px rgba(50,40,30,.5),0 12px 22px -10px rgba(50,40,30,.25);transition:transform .5s ease,box-shadow .5s ease}
-.canvas img{width:100%;aspect-ratio:7/13.4;object-fit:cover}
-.canvas:nth-child(2){margin-top:34px}
-@media (hover:hover){.canvas:hover{transform:translateY(-6px);box-shadow:0 44px 70px -24px rgba(50,40,30,.5),0 14px 26px -10px rgba(50,40,30,.22)}}
-.heart-sec .head{margin-bottom:6px}
-.squares{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 36px;max-width:1000px;margin:0 auto;width:100%}
-.square{min-height:300px;background:#fff var(--card) center/100% 100% no-repeat;border-radius:24px;padding:13% 11%;display:flex;align-items:center;font-size:21px;line-height:1.45;color:var(--text);
-  box-shadow:var(--depth)}
-.sq-green{--card:url('assets/card-green.webp')}
-.sq-orange{--card:url('assets/card-orange.webp')}
-.sq-blue{--card:url('assets/card-blue.webp')}
-.sq-beige{--card:url('assets/card-beige.webp')}
-.square b{color:var(--ink)}
-.square:nth-child(1){--fd:0s}
-.square:nth-child(2){--fd:1.4s}
-.square:nth-child(3){--fd:.7s}
-.square:nth-child(4){--fd:2.1s}
+/* Triptych on the left stays in view; the four thoughts on the right are numbered 01–04 */
+.who-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:start;max-width:1120px}
+.who-tri{position:sticky;top:120px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.who-tri img{width:100%;aspect-ratio:7/13.4;object-fit:cover;border-radius:4px;box-shadow:0 34px 60px -22px rgba(50,40,30,.5),0 12px 22px -10px rgba(50,40,30,.25)}
+.who-tri img:nth-child(2){margin-top:28px}
+.who-text{display:flex;flex-direction:column;gap:14px}
+.who-list{display:flex;flex-direction:column}
+.who-item{display:grid;grid-template-columns:76px 1fr;gap:18px;padding:30px 0;border-top:1px solid var(--beige)}
+.who-item:last-child{border-bottom:1px solid var(--beige)}
+.who-num{font-family:var(--num);font-size:44px;line-height:1;color:var(--line)}
+.who-item .stmt{font-size:21px;line-height:1.5;color:var(--text)}
+.who-item .stmt b{color:var(--ink)}
 
 /* ---------- 9. Founder ---------- */
 .founder-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
@@ -466,10 +459,12 @@ form.ask .btn{height:56px}
   .crew-item .crew-role{align-self:start}
   .crew-item p{grid-column:1/-1;font-size:17px;margin-top:10px}
 
-  .squares{grid-template-columns:1fr;gap:26px}
-  .square{min-height:280px;padding:56px 30px 46px;font-size:19px}
-  .triptych{gap:10px;margin-bottom:8px}
-  .canvas:nth-child(2){margin-top:16px}
+  .who-grid{grid-template-columns:1fr;gap:28px}
+  .who-tri{position:relative;top:0;gap:10px}
+  .who-tri img:nth-child(2){margin-top:16px}
+  .who-item{grid-template-columns:52px 1fr;padding:22px 0}
+  .who-num{font-size:32px}
+  .who-item .stmt{font-size:19px}
 
   .founder-photo{position:relative;top:0}
   .founder-img{max-width:340px;border-radius:24px}
@@ -571,8 +566,6 @@ form.ask .btn{height:56px}
 .motion .step.rv .n{opacity:0;transform:scale(.4);transition:transform .7s cubic-bezier(.3,1.6,.5,1) calc(var(--d,0s) + .25s),opacity .4s calc(var(--d,0s) + .25s)}
 .motion .step.in .n{opacity:1;transform:none}
 
-/* The squares float with their shadows breathing underneath */
-.motion .square.in{animation:drift 6.5s ease-in-out var(--fd,0s) infinite;transition:opacity .9s ease var(--d,0s)}
 
 .motion .gift-cards.in img:nth-child(2){animation:none}
 .motion .form-ok:not([hidden]){animation:fadeUp .6s both}
