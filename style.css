@@ -121,8 +121,8 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 .about-text{display:flex;flex-direction:column;gap:18px}
 .about-text p{font-size:22px;color:var(--text)}
 .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
-.studio-card{display:flex;flex-direction:column;gap:22px;max-width:440px;justify-self:center;width:100%}
-.studio-card img{width:100%;aspect-ratio:1/1.08;object-fit:cover;object-position:50% 12%;border-radius:32px;box-shadow:var(--depth)}
+.studio-card{display:flex;flex-direction:column;gap:22px;max-width:420px;justify-self:center;width:100%}
+.studio-card img{width:100%;aspect-ratio:3/4.1;object-fit:cover;object-position:50% 34%;border-radius:32px;box-shadow:var(--depth)}
 .studio-info{display:flex;flex-direction:column;gap:10px;font-size:20px;font-weight:600;margin-top:10px;padding-top:22px;border-top:1px solid var(--beige)}
 .studio-info a{display:flex;align-items:center;gap:12px;text-decoration:none}
 .studio-info svg{flex-shrink:0;color:var(--brown)}
@@ -184,17 +184,17 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 /* ---------- 8. Хто ми ---------- */
 .heart-sec{background:#fff}
 /* One painting made of the studio's three canvases; the infinity stays open in the middle */
-.heart-sec{position:relative;isolation:isolate;padding:110px 24px;min-height:min(60vw,900px);display:flex;align-items:center;background:#3F5248 url('assets/who-panorama.webp') center/cover no-repeat}
+.heart-sec{position:relative;isolation:isolate;padding:56px 24px;min-height:min(calc(100svh - 76px),800px);display:flex;align-items:center;background:#3F5248 url('assets/who-panorama.webp') center/cover no-repeat}
 .heart-sec::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,26,22,.28),rgba(20,26,22,.05) 30%,rgba(20,26,22,.05) 70%,rgba(20,26,22,.28))}
-.who-wrap{display:flex;flex-direction:column;align-items:center;gap:40px}
+.who-wrap{display:flex;flex-direction:column;align-items:center;gap:26px}
 .who-title{color:#FFF8EE;text-shadow:0 2px 16px rgba(0,0,0,.5)}
-.who-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.75fr) minmax(0,1fr);width:100%}
-.who-col{display:flex;flex-direction:column;gap:26px}
+.who-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.75fr) minmax(0,1fr);align-items:center;width:100%}
+.who-col{display:flex;flex-direction:column;gap:22px}
 .who-col:last-child{grid-column:3}
-.who-item{display:grid;grid-template-columns:58px 1fr;gap:14px;align-items:start;background:rgba(255,253,249,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
-  border-radius:24px;padding:26px 26px 26px 22px;box-shadow:0 30px 50px -18px rgba(10,20,15,.55),0 8px 18px -6px rgba(10,20,15,.22)}
-.who-num{font-family:var(--num);font-size:38px;line-height:1;color:var(--line)}
-.who-item .stmt{font-size:19px;line-height:1.5;color:var(--text)}
+.who-item{--bw:10px;--lw:2.5px;--r:30px;--ri:21px;--lc:#2E3A33;filter:drop-shadow(0 22px 30px rgba(10,20,15,.45))}
+.who-inner{display:grid;grid-template-columns:50px 1fr;gap:12px;align-items:start;background:rgba(255,253,249,.95);border-radius:calc(var(--ri) - var(--lw));padding:22px 22px 22px 18px}
+.who-num{font-family:var(--num);font-size:34px;line-height:1;color:var(--line)}
+.who-item .stmt{font-size:18px;line-height:1.45;color:var(--text)}
 .who-item .stmt b{color:var(--ink)}
 
 /* ---------- 9. Founder ---------- */
@@ -466,7 +466,7 @@ form.ask .btn{height:56px}
   .who-col{gap:14px}
   .who-col + .who-col{margin-top:14px}
   .who-col:last-child{grid-column:auto}
-  .who-item{grid-template-columns:44px 1fr;padding:20px 18px}
+  .who-inner{grid-template-columns:40px 1fr;padding:18px 16px}
   .who-num{font-size:28px}
   .who-item .stmt{font-size:18px}
 
