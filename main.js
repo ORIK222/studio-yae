@@ -182,7 +182,7 @@ var CONFIG = {
     window.addEventListener('resize', window.aimFrames);
 
     var reveal = '.head > :not(.script), .about-text > :not(.script), .studio-card, .story-photo, .story-text > :not(.script),' +
-      ' .value, .team-head > :not(.script), .person, .crew h3, .crew-item, .square, .founder-photo, .founder-copy > :not(.script),' +
+      ' .value, .team-head > :not(.script), .person, .crew h3, .crew-item, .canvas, .square, .founder-photo, .founder-copy > :not(.script),' +
       ' .services-head > :not(.script), .svc, .access-head, .access-list li, .step, .book-form, .ask-text > :not(.script), .ask-frame,' +
       ' .gift-cards, .gift-text > :not(.script), .cert-order, .contact-card, .social-wall, .map';
     all(reveal).forEach(function (el) { el.classList.add('rv'); });
