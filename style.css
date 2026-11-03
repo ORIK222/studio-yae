@@ -183,17 +183,18 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 
 /* ---------- 8. Хто ми ---------- */
 .heart-sec{background:#fff}
-/* Triptych on the left stays in view; the four thoughts on the right are numbered 01–04 */
-.who-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:start;max-width:1120px}
-.who-tri{position:sticky;top:120px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.who-tri img{width:100%;aspect-ratio:7/13.4;object-fit:cover;border-radius:4px;box-shadow:0 34px 60px -22px rgba(50,40,30,.5),0 12px 22px -10px rgba(50,40,30,.25)}
-.who-tri img:nth-child(2){margin-top:28px}
-.who-text{display:flex;flex-direction:column;gap:14px}
-.who-list{display:flex;flex-direction:column}
-.who-item{display:grid;grid-template-columns:76px 1fr;gap:18px;padding:30px 0;border-top:1px solid var(--beige)}
-.who-item:last-child{border-bottom:1px solid var(--beige)}
-.who-num{font-family:var(--num);font-size:44px;line-height:1;color:var(--line)}
-.who-item .stmt{font-size:21px;line-height:1.5;color:var(--text)}
+/* One painting made of the studio's three canvases; the infinity stays open in the middle */
+.heart-sec{position:relative;isolation:isolate;padding:110px 24px;min-height:min(60vw,900px);display:flex;align-items:center;background:#3F5248 url('assets/who-panorama.webp') center/cover no-repeat}
+.heart-sec::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,26,22,.28),rgba(20,26,22,.05) 30%,rgba(20,26,22,.05) 70%,rgba(20,26,22,.28))}
+.who-wrap{display:flex;flex-direction:column;align-items:center;gap:40px}
+.who-title{color:#FFF8EE;text-shadow:0 2px 16px rgba(0,0,0,.5)}
+.who-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.75fr) minmax(0,1fr);width:100%}
+.who-col{display:flex;flex-direction:column;gap:26px}
+.who-col:last-child{grid-column:3}
+.who-item{display:grid;grid-template-columns:58px 1fr;gap:14px;align-items:start;background:rgba(255,253,249,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  border-radius:24px;padding:26px 26px 26px 22px;box-shadow:0 30px 50px -18px rgba(10,20,15,.55),0 8px 18px -6px rgba(10,20,15,.22)}
+.who-num{font-family:var(--num);font-size:38px;line-height:1;color:var(--line)}
+.who-item .stmt{font-size:19px;line-height:1.5;color:var(--text)}
 .who-item .stmt b{color:var(--ink)}
 
 /* ---------- 9. Founder ---------- */
@@ -459,12 +460,15 @@ form.ask .btn{height:56px}
   .crew-item .crew-role{align-self:start}
   .crew-item p{grid-column:1/-1;font-size:17px;margin-top:10px}
 
-  .who-grid{grid-template-columns:1fr;gap:28px}
-  .who-tri{position:relative;top:0;gap:10px}
-  .who-tri img:nth-child(2){margin-top:16px}
-  .who-item{grid-template-columns:52px 1fr;padding:22px 0}
-  .who-num{font-size:32px}
-  .who-item .stmt{font-size:19px}
+  .heart-sec{display:block;min-height:0;padding:56px 16px 40px;background-image:url('assets/who-panorama-sm.webp');background-position:42% 0;background-size:auto 520px;background-color:#3F5248}
+  .who-wrap{gap:0}
+  .who-cols{grid-template-columns:1fr;padding-top:300px}
+  .who-col{gap:14px}
+  .who-col + .who-col{margin-top:14px}
+  .who-col:last-child{grid-column:auto}
+  .who-item{grid-template-columns:44px 1fr;padding:20px 18px}
+  .who-num{font-size:28px}
+  .who-item .stmt{font-size:18px}
 
   .founder-photo{position:relative;top:0}
   .founder-img{max-width:340px;border-radius:24px}
