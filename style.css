@@ -191,7 +191,6 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 .watermark{position:absolute;right:-60px;bottom:-40px;width:520px;opacity:.13;z-index:-1;pointer-events:none}
 .founder-photo{position:sticky;top:110px;display:flex;flex-direction:column;align-items:center;gap:8px}
 .founder-img{width:100%;max-width:420px;border-radius:30px;box-shadow:var(--depth)}
-.founder-sign{width:190px;margin-top:-6px}
 .founder-copy{display:flex;flex-direction:column;gap:18px}
 .founder-copy > p{font-size:21px;color:var(--text)}
 .hello{font-family:var(--script);font-weight:400;font-size:52px;line-height:1.1}
@@ -454,7 +453,6 @@ form.ask .btn{height:56px}
 
   .founder-photo{position:relative;top:0}
   .founder-img{max-width:340px;border-radius:24px}
-  .founder-sign{width:150px}
   .watermark{width:300px;right:-50px;bottom:-30px}
   .hello{font-size:40px}
   .more summary{font-size:21px}

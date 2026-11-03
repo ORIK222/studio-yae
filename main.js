@@ -204,16 +204,6 @@ var CONFIG = {
     }, { rootMargin: '0px 0px -8% 0px', threshold: .12 });
     all('.frame, .rv').forEach(function (el) { io.observe(el); });
 
-    var sign = $('olenaSign');
-    if (sign) {
-      var ioSign = new IntersectionObserver(function (entries) {
-        if (!entries[0].isIntersecting) return;
-        sign.preload = 'auto'; sign.play().catch(function () {});
-        ioSign.disconnect();
-      }, { threshold: .6 });
-      ioSign.observe(sign);
-    }
-
     var ioScript = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add('in'); ioScript.unobserve(e.target); }
