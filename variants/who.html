@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Варіанти блоку «Хто ми»</title>
+<link rel="icon" href="../assets/logo-sm.webp">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Playfair+Display:wght@400;600;700&family=Marck+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  /* The four statements are the same in every variant; only the composition changes */
+  .vlabel{position:sticky;top:0;z-index:30;background:#1A1718;color:#fff;padding:14px 24px;display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline}
+  .vlabel b{font-size:22px}
+  .vlabel span{font-size:17px;opacity:.8}
+  .intro-note{padding:40px 24px 30px;max-width:900px;margin:0 auto;font-size:20px;color:var(--text)}
+  .intro-note h1{font-size:40px;margin-bottom:10px;color:var(--ink)}
+  .vsec{padding:88px 24px}
+  .vhead{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:44px;text-align:center}
+  .stmt{font-size:21px;line-height:1.5;color:var(--text)}
+  .stmt b{color:var(--ink)}
+  .canvas-img{border-radius:4px;box-shadow:0 34px 60px -22px rgba(50,40,30,.5),0 12px 22px -10px rgba(50,40,30,.25)}
+
+  /* 1 — Gallery: each painting beside its words, alternating sides */
+  .v1{background:#fff}
+  .v1 .rows{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:64px}
+  .v1 .row{display:grid;grid-template-columns:300px 1fr;gap:64px;align-items:center}
+  .v1 .row:nth-child(even){grid-template-columns:1fr 300px}
+  .v1 .row:nth-child(even) .canvas-img{order:2}
+  .v1 .canvas-img{width:300px;aspect-ratio:4/5;object-fit:cover}
+  .v1 .words{display:flex;flex-direction:column;gap:22px}
+  .v1 .words .stmt{font-size:23px}
+  .v1 .words .stmt + .stmt{padding-top:22px;border-top:1px solid var(--beige)}
+
+  /* 2 — The paintings as a background band, statements floating on it */
+  .v2{position:relative;isolation:isolate;padding:110px 24px}
+  .v2 .band{position:absolute;inset:0;z-index:-2;display:grid;grid-template-columns:repeat(3,1fr)}
+  .v2 .band div{background:center/cover no-repeat}
+  .v2::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(255,250,244,.18),rgba(255,250,244,0) 40%,rgba(30,40,30,.18))}
+  .v2 .vhead h2{color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.45)}
+  .v2 .grid{max-width:980px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+  .v2 .card{background:rgba(255,253,249,.94);border-radius:24px;padding:30px 32px;box-shadow:0 30px 50px -18px rgba(10,20,15,.5),0 8px 18px -6px rgba(10,20,15,.2)}
+
+  /* 3 — Triptych stays in view on the left, statements scroll on the right as 01–04 */
+  .v3{background:var(--sand)}
+  .v3 .wrap2{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:start}
+  .v3 .tri{position:sticky;top:120px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .v3 .tri img:nth-child(2){margin-top:28px}
+  .v3 .tri img{width:100%;aspect-ratio:7/13.4;object-fit:cover}
+  .v3 .list{display:flex;flex-direction:column}
+  .v3 .item{display:grid;grid-template-columns:76px 1fr;gap:18px;padding:30px 0;border-top:1px solid var(--beige)}
+  .v3 .item:last-child{border-bottom:1px solid var(--beige)}
+  .v3 .num{font-family:var(--num);font-size:44px;line-height:1;color:var(--line)}
+  .v3 .vhead{align-items:flex-start;text-align:left;margin-bottom:10px}
+
+  /* 4 — One painting in the centre (the infinity, like the logo), words around it */
+  .v4{background:#fff}
+  .v4 .grid{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 300px 1fr;gap:56px;align-items:center}
+  .v4 .side{display:flex;flex-direction:column;gap:56px}
+  .v4 .side.l{text-align:right}
+  .v4 .canvas-img{width:300px;aspect-ratio:7/13.4;object-fit:cover}
+  .v4 .side .stmt{position:relative;padding-top:34px}
+  .v4 .side .stmt::before{content:"";position:absolute;top:0;width:150px;height:26px;background:var(--s) center/100% 100% no-repeat}
+  .v4 .side.l .stmt::before{right:0}
+  .v4 .side.r .stmt::before{left:0}
+
+  @media (max-width:860px){
+    .vsec{padding:56px 16px}
+    .v1 .row,.v1 .row:nth-child(even){grid-template-columns:1fr;gap:20px}
+    .v1 .row:nth-child(even) .canvas-img{order:0}
+    .v1 .canvas-img{width:100%;max-width:340px;margin:0 auto}
+    .v1 .words .stmt{font-size:19px}
+    .v2 .grid{grid-template-columns:1fr}
+    .v2 .band{grid-template-columns:1fr;grid-template-rows:repeat(3,1fr)}
+    .v3 .wrap2{grid-template-columns:1fr;gap:28px}
+    .v3 .tri{position:relative;top:0}
+    .v3 .item{grid-template-columns:52px 1fr}
+    .v3 .num{font-size:32px}
+    .v4 .grid{grid-template-columns:1fr;gap:28px}
+    .v4 .canvas-img{order:-1;width:220px;margin:0 auto}
+    .v4 .side,.v4 .side.l{text-align:left;gap:28px}
+    .v4 .side.l .stmt::before{right:auto;left:0}
+    .stmt{font-size:19px}
+  }
+</style>
+</head>
+<body>
+
+<div class="intro-note">
+  <h1>Блок «Хто ми» — варіанти</h1>
+  <p>Той самий текст і ті самі картини студії, різна подача. Гортайте й порівнюйте; на телефоні кожен варіант теж перебудовується.</p>
+</div>
+
+<!-- 1 -->
+<div class="vlabel"><b>Варіант 1 — «Галерея»</b><span>кожна картина поруч зі своїми словами, по черзі ліворуч і праворуч</span></div>
+<section class="vsec v1">
+  <div class="vhead"><h2 class="mt mt-green">Хто ми</h2></div>
+  <div class="rows">
+    <div class="row">
+      <img class="canvas-img" src="../assets/painting-1.webp" alt="" style="object-position:50% 30%">
+      <div class="words"><p class="stmt"><b>Ми — команда</b> людей, кожен із яких створює свою частину цілого: хтось працює безпосередньо з людиною та її внутрішнім світом; хтось формує візуальну концепцію; хтось відповідає за деталі, які непомітні, але саме вони створюють відчуття цілісності.</p></div>
+    </div>
+    <div class="row">
+      <img class="canvas-img" src="../assets/painting-2.webp" alt="" style="object-position:50% 0">
+      <div class="words"><p class="stmt">Ми віримо, що якісний простір народжується там, де професіоналізм зустрічається з увагою до деталей. Тому наша команда — <b>не про однаковість, а про різноманітність, яка працює разом.</b></p></div>
+    </div>
+    <div class="row">
+      <img class="canvas-img" src="../assets/painting-3.webp" alt="" style="object-position:50% 25%">
+      <div class="words">
+        <p class="stmt">Ми постійно навчаємося, супервізуємося, обговорюємо складні випадки й розвиваємося — тому що <b>професійність для нас не має кінцевої точки.</b></p>
+        <p class="stmt">Ми ростемо як команда, щоб створювати якісніший простір для тих, хто нам довіряє. І все це — про одне: <b>атмосферу, у якій хочеться залишитися.</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 -->
+<div class="vlabel"><b>Варіант 2 — «Стрічка»</b><span>три картини разом — фон на всю ширину, стрічка тече крізь них; картки поверх (як було з горами, але з вашими картинами)</span></div>
+<section class="vsec v2">
+  <div class="band" aria-hidden="true">
+    <div style="background-image:url('../assets/band-1.webp')"></div>
+    <div style="background-image:url('../assets/band-2.webp')"></div>
+    <div style="background-image:url('../assets/band-3.webp')"></div>
+  </div>
+  <div class="vhead"><h2>Хто ми</h2></div>
+  <div class="grid">
+    <div class="card"><p class="stmt"><b>Ми — команда</b> людей, кожен із яких створює свою частину цілого: хтось працює безпосередньо з людиною та її внутрішнім світом; хтось формує візуальну концепцію; хтось відповідає за деталі, які непомітні, але саме вони створюють відчуття цілісності.</p></div>
+    <div class="card"><p class="stmt">Ми віримо, що якісний простір народжується там, де професіоналізм зустрічається з увагою до деталей. Тому наша команда — <b>не про однаковість, а про різноманітність, яка працює разом.</b></p></div>
+    <div class="card"><p class="stmt">Ми постійно навчаємося, супервізуємося, обговорюємо складні випадки й розвиваємося — тому що <b>професійність для нас не має кінцевої точки.</b></p></div>
+    <div class="card"><p class="stmt">Ми ростемо як команда, щоб створювати якісніший простір для тих, хто нам довіряє. І все це — про одне: <b>атмосферу, у якій хочеться залишитися.</b></p></div>
+  </div>
+</section>
+
+<!-- 3 -->
+<div class="vlabel"><b>Варіант 3 — «Триптих і чотири думки»</b><span>картини стоять ліворуч і не зникають, поки читаєш; текст праворуч — пронумерований, без карток</span></div>
+<section class="vsec v3">
+  <div class="wrap2">
+    <div class="tri">
+      <img class="canvas-img" src="../assets/painting-1.webp" alt="">
+      <img class="canvas-img" src="../assets/painting-2.webp" alt="">
+      <img class="canvas-img" src="../assets/painting-3.webp" alt="">
+    </div>
+    <div>
+      <div class="vhead"><h2 class="mt mt-green">Хто ми</h2></div>
+      <div class="list">
+        <div class="item"><span class="num">01</span><p class="stmt"><b>Ми — команда</b> людей, кожен із яких створює свою частину цілого: хтось працює безпосередньо з людиною та її внутрішнім світом; хтось формує візуальну концепцію; хтось відповідає за деталі, які непомітні, але саме вони створюють відчуття цілісності.</p></div>
+        <div class="item"><span class="num">02</span><p class="stmt">Ми віримо, що якісний простір народжується там, де професіоналізм зустрічається з увагою до деталей. Тому наша команда — <b>не про однаковість, а про різноманітність, яка працює разом.</b></p></div>
+        <div class="item"><span class="num">03</span><p class="stmt">Ми постійно навчаємося, супервізуємося, обговорюємо складні випадки й розвиваємося — тому що <b>професійність для нас не має кінцевої точки.</b></p></div>
+        <div class="item"><span class="num">04</span><p class="stmt">Ми ростемо як команда, щоб створювати якісніший простір для тих, хто нам довіряє. І все це — про одне: <b>атмосферу, у якій хочеться залишитися.</b></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 -->
+<div class="vlabel"><b>Варіант 4 — «Одна картина в центрі»</b><span>картина з безкінечністю (як у логотипі) посередині, думки довкола неї з кольоровими мазками</span></div>
+<section class="vsec v4">
+  <div class="vhead"><h2 class="mt mt-green">Хто ми</h2></div>
+  <div class="grid">
+    <div class="side l">
+      <p class="stmt" style="--s:url('../assets/stroke-green.webp')"><b>Ми — команда</b> людей, кожен із яких створює свою частину цілого: хтось працює безпосередньо з людиною та її внутрішнім світом; хтось формує візуальну концепцію; хтось відповідає за деталі, які непомітні, але саме вони створюють відчуття цілісності.</p>
+      <p class="stmt" style="--s:url('../assets/stroke-orange.webp')">Ми віримо, що якісний простір народжується там, де професіоналізм зустрічається з увагою до деталей. Тому наша команда — <b>не про однаковість, а про різноманітність, яка працює разом.</b></p>
+    </div>
+    <img class="canvas-img" src="../assets/painting-3.webp" alt="">
+    <div class="side r">
+      <p class="stmt" style="--s:url('../assets/stroke-blue.webp')">Ми постійно навчаємося, супервізуємося, обговорюємо складні випадки й розвиваємося — тому що <b>професійність для нас не має кінцевої точки.</b></p>
+      <p class="stmt" style="--s:url('../assets/stroke-beige.webp')">Ми ростемо як команда, щоб створювати якісніший простір для тих, хто нам довіряє. І все це — про одне: <b>атмосферу, у якій хочеться залишитися.</b></p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
