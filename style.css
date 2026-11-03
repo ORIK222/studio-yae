@@ -189,7 +189,8 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 .heart-sec{position:relative;isolation:isolate;padding:56px 24px;min-height:min(calc(100svh - 76px),800px);display:flex;align-items:center;background:#3F5248 url('assets/who-panorama.webp') center top/cover no-repeat}
 .heart-sec::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,26,22,.28),rgba(20,26,22,.05) 30%,rgba(20,26,22,.05) 70%,rgba(20,26,22,.28))}
 .who-wrap{display:flex;flex-direction:column;align-items:center;gap:26px}
-.who-title{color:#FFF8EE;text-shadow:0 2px 16px rgba(0,0,0,.5)}
+/* Same handwritten heading as the other painting block («Що для нас важливо») */
+.who-title{font-family:var(--script);font-weight:400;font-size:44px;line-height:1.05;color:#FFF8EE;text-shadow:0 2px 14px rgba(0,0,0,.45)}
 .who-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.75fr) minmax(0,1fr);align-items:center;width:100%}
 .who-col{display:flex;flex-direction:column;gap:22px}
 .who-col:last-child{grid-column:3}
@@ -418,7 +419,7 @@ form.ask .btn{height:56px}
   .story-text{order:-1}
   .motto{font-size:26px}
 
-  .land .head .script{font-size:36px}
+  .land .head .script,.who-title{font-size:36px}
   .values-land{padding:64px 16px}
   .value{padding:18px;border-radius:20px;gap:14px}
   .value svg{width:28px;height:28px}
