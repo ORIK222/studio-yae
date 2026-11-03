@@ -7,7 +7,12 @@
 <meta name="description" content="Психологічна студія «Яє» у Рівному: консультування, психотерапія, психодіагностика, соціально-психологічний тренінг та психологічні заходи для дітей, підлітків, дорослих, пар і сімей. Офлайн і онлайн.">
 <meta property="og:title" content="Психологічна студія «Яє» — Рівне">
 <meta property="og:description" content="Створи найкращу версію Себе.">
-<meta property="og:image" content="assets/team-full.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://orik222.github.io/studio-yae/">
+<meta property="og:image" content="https://orik222.github.io/studio-yae/assets/team-full.jpg">
+<meta property="og:locale" content="uk_UA">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://orik222.github.io/studio-yae/">
 <link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +22,9 @@
   // Motion unless the visitor asked for less; the logo intro on every load; language: saved choice, else the browser's
   (function () {
     var d = document.documentElement;
-    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('motion', 'intro-on');
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('motion');
+    // The logo intro on every load, except when the link leads straight to a section (#booking, #contacts…)
+    if (d.classList.contains('motion') && !location.hash) d.classList.add('intro-on');
     var lang = null; try { lang = localStorage.getItem('yae_lang'); } catch (e) {}
     if (!lang) lang = /^(uk|ru|be)\b/i.test(navigator.language || 'uk') ? 'uk' : 'en';
     d.lang = lang === 'en' ? 'en' : 'uk';
@@ -28,7 +35,7 @@
 <body>
 
 <!-- 1. Loading screen: the logo animation -->
-<div class="intro" id="intro" aria-hidden="true">
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="Психологічна студія «Яє»">
   <video id="introVideo" src="assets/intro.mp4" playsinline preload="auto"></video>
   <div class="intro-btns">
     <button type="button" id="introSound" class="intro-btn sound" hidden><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span data-en="Turn on sound">Увімкнути звук</span></button>
@@ -40,8 +47,8 @@
 <header class="site-header" id="header">
   <div class="wrap">
     <a href="#top" class="brand">
-      <img src="assets/logo.png" alt="Логотип студії «Яє»" data-en-alt="Studio Yae logo" width="52">
-      <img class="ua-only" src="assets/wordmark.png" alt="Психологічна студія" width="150">
+      <img src="assets/logo-sm.webp" alt="Логотип студії «Яє»" data-en-alt="Studio Yae logo" width="52" height="44">
+      <img class="ua-only" src="assets/wordmark-sm.webp" alt="Психологічна студія" width="150" height="42">
       <span class="en-only script brand-en">Psychological studio</span>
     </a>
     <nav class="site-nav" id="nav" aria-label="Головне меню">
@@ -57,8 +64,8 @@
       <button type="button" data-lang="uk">UA</button><span aria-hidden="true">|</span><button type="button" data-lang="en">EN</button>
     </div>
     <button type="button" class="burger" id="burger" aria-label="Відкрити меню" aria-expanded="false" aria-controls="nav">
-      <svg class="i-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1718" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      <svg class="i-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1718" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      <svg class="i-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="i-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
   </div>
 </header>
@@ -76,7 +83,7 @@
         <div class="lk-text lk-top" id="topText" data-en="Psychological studio">Психологічна студія</div>
         <div class="lk-logo">
           <canvas id="logoCanvas" width="640" height="520"></canvas>
-          <img class="lk-still" src="assets/logo.png" alt="" width="300">
+          <img class="lk-still" src="assets/logo-sm.webp" alt="" width="240" height="201">
         </div>
         <div class="lk-text lk-bottom" id="bottomText" data-en="Create the best version of Yourself">Створи найкращу версію Себе</div>
         <div class="rule" id="rule2"></div>
@@ -104,7 +111,7 @@
         </div>
       </div>
       <figure class="studio-card">
-        <img src="assets/studio-full.jpg" alt="Кабінет студії «Яє»: картина на стіні, два крісла і столик біля вікна" data-en-alt="Studio Yae room: a painting on the wall, two armchairs and a table by the window" width="734" height="1280">
+        <img src="assets/studio-full.jpg" alt="Кабінет студії «Яє»: картина на стіні, два крісла і столик біля вікна" data-en-alt="Studio Yae room: a painting on the wall, two armchairs and a table by the window" width="734" height="1280" loading="lazy" decoding="async">
         <figcaption class="studio-info">
           <a href="https://maps.app.goo.gl/kxekSsByFt43Rvud6" target="_blank" rel="noopener">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
@@ -127,7 +134,7 @@
   <section id="story" class="story">
     <div class="wrap story-grid">
       <div class="story-photo">
-        <img src="assets/team-full.jpg" alt="Команда студії «Яє»" data-en-alt="The Yae studio team" width="1000" height="1515">
+        <img src="assets/team-full.jpg" alt="Команда студії «Яє»" data-en-alt="The Yae studio team" width="1000" height="1515" loading="lazy" decoding="async">
       </div>
       <div class="story-text">
         <div class="script" data-en="Our story">Наша історія</div>
@@ -166,7 +173,7 @@
   <section id="team" class="sand team">
     <div class="wrap stack">
       <div class="team-head">
-        <img class="emblem" src="assets/inf-ye-3.png" alt="" width="260">
+        <img class="emblem" src="assets/inf-ye-3.webp" alt="" width="260" height="104" loading="lazy">
         <div class="script" data-en="Team">Команда</div>
         <h2 class="mt mt-green" data-en="We are a team">Ми — команда</h2>
         <div class="chips">
@@ -178,7 +185,7 @@
 
       <div class="psy-list">
         <article class="person founder">
-          <div class="avatar"><img src="assets/olena.jpg" alt="Олена СТОРОЖ" data-en-alt="Olena STOROZH" width="210" height="210"></div>
+          <div class="avatar"><img src="assets/olena.jpg" alt="Олена СТОРОЖ" data-en-alt="Olena STOROZH" width="210" height="210" loading="lazy" decoding="async"></div>
           <div class="info">
             <div class="badge" data-en="Studio founder">Засновниця студії</div>
             <h3 data-en="Olena STOROZH">Олена СТОРОЖ</h3>
@@ -189,14 +196,14 @@
           </div>
         </article>
         <article class="person">
-          <div class="avatar"><img src="assets/ilona-klymchuk.jpg" alt="Ілона КЛИМЧУК" data-en-alt="Ilona KLYMCHUK" width="220" height="220"></div>
+          <div class="avatar"><img src="assets/ilona-klymchuk.jpg" alt="Ілона КЛИМЧУК" data-en-alt="Ilona KLYMCHUK" width="220" height="220" loading="lazy" decoding="async"></div>
           <h3 data-en="Ilona KLYMCHUK">Ілона КЛИМЧУК</h3>
           <div class="role" data-en="Clinical psychologist, practising psychologist, psychology lecturer, trainer">Клінічна психологиня, практикуюча психологиня, викладачка психології, тренерка</div>
           <div class="aud" data-en="Children · adults">Діти · дорослі</div>
           <a href="#booking" class="cta" data-spec="ilona" data-en="Book with Ilona →">Записатися до Ілони →</a>
         </article>
         <article class="person">
-          <div class="avatar"><img src="assets/anastasiia.jpg" alt="Анастасія ПОЛІЩУК" data-en-alt="Anastasiia POLISHCHUK" width="205" height="205"></div>
+          <div class="avatar"><img src="assets/anastasiia.jpg" alt="Анастасія ПОЛІЩУК" data-en-alt="Anastasiia POLISHCHUK" width="205" height="205" loading="lazy" decoding="async"></div>
           <h3 data-en="Anastasiia POLISHCHUK">Анастасія ПОЛІЩУК</h3>
           <div class="role" data-en="Practising psychologist, psychology lecturer, trainer">Практикуюча психологиня, викладачка психології, тренерка</div>
           <div class="aud" data-en="Children · teens · young adults">Діти · підлітки · юнаки</div>
@@ -208,19 +215,19 @@
         <h3 class="script" data-en="And those who make the studio cosy">А ще — ті, хто робить студію затишною</h3>
         <div class="crew-list">
           <div class="crew-item">
-            <img src="assets/nadiia.jpg" alt="Надія ПОЛХОВСЬКА" data-en-alt="Nadiia POLKHOVSKA" width="250" height="250">
+            <img src="assets/nadiia.jpg" alt="Надія ПОЛХОВСЬКА" data-en-alt="Nadiia POLKHOVSKA" width="250" height="250" loading="lazy" decoding="async">
             <b data-en="Nadiia POLKHOVSKA">Надія ПОЛХОВСЬКА</b>
             <span class="crew-role" data-en="Designer">Дизайнер</span>
             <p data-en="7 years of bold projects. Fluent in professional software — design of any complexity and any content.">7 років реалізації сміливих проєктів. Вільно володіє професійним софтом — дизайн будь-якої складності та будь-якого контенту.</p>
           </div>
           <div class="crew-item">
-            <img src="assets/ilona-kochakova.jpg" alt="Ілона КОЧАКОВА" data-en-alt="Ilona KOCHAKOVA" width="220" height="220">
+            <img src="assets/ilona-kochakova.jpg" alt="Ілона КОЧАКОВА" data-en-alt="Ilona KOCHAKOVA" width="220" height="220" loading="lazy" decoding="async">
             <b data-en="Ilona KOCHAKOVA">Ілона КОЧАКОВА</b>
             <span class="crew-role" data-en="SMM, content and websites">SMM, контент і сайти</span>
             <p data-en="Turns professional knowledge and ideas into interesting, clear content: Instagram, TikTok, the studio website.">Перетворює професійні знання та ідеї на цікавий і зрозумілий контент: Instagram, TikTok, сайт студії.</p>
           </div>
           <div class="crew-item">
-            <img src="assets/solomiia.jpg" alt="Соломія ПИЛИПЧУК" data-en-alt="Solomiia PYLYPCHUK" width="230" height="230">
+            <img src="assets/solomiia.jpg" alt="Соломія ПИЛИПЧУК" data-en-alt="Solomiia PYLYPCHUK" width="230" height="230" loading="lazy" decoding="async">
             <b data-en="Solomiia PYLYPCHUK">Соломія ПИЛИПЧУК</b>
             <span class="crew-role" data-en="English translation">Переклад англійською</span>
             <p data-en="Adapts meaning for English-speaking readers while keeping the depth of the psychological context.">Адаптує зміст і сенси для англомовної аудиторії, зберігаючи глибину психологічного контексту.</p>
@@ -231,26 +238,26 @@
   </section>
 
   <!-- 8. Ми — команда: floating squares on a landscape — colour -->
-  <section id="heart" class="land heart-land" style="--bg:url('assets/land-mountains-mid.jpg')">
+  <section id="heart" class="heart-sec">
     <div class="wrap stack">
       <div class="head center">
-        <div class="script" data-en="Who we are">Хто ми</div>
+        <h2 class="mt mt-green" data-en="Who we are">Хто ми</h2>
       </div>
       <div class="squares">
-        <div class="square"><p data-en="&lt;b&gt;We are a team&lt;/b&gt; of people, each creating their own part of the whole: some work directly with a person and their inner world, someone shapes the visual concept, someone takes care of details that go unnoticed, yet create a sense of wholeness."><b>Ми — команда</b> людей, кожен із яких створює свою частину цілого: хтось працює безпосередньо з людиною та її внутрішнім світом; хтось формує візуальну концепцію; хтось відповідає за деталі, які непомітні, але саме вони створюють відчуття цілісності.</p></div>
-        <div class="square"><p data-en="We believe a good space is born where professionalism meets attention to detail. So our team is &lt;b&gt;not about sameness, but about diversity working together.&lt;/b&gt;">Ми віримо, що якісний простір народжується там, де професіоналізм зустрічається з увагою до деталей. Тому наша команда — <b>не про однаковість, а про різноманітність, яка працює разом.</b></p></div>
-        <div class="square"><p data-en="We keep learning, take supervision, discuss difficult cases and grow — because for us &lt;b&gt;professionalism has no finish line.&lt;/b&gt;">Ми постійно навчаємося, супервізуємося, обговорюємо складні випадки й розвиваємося — тому що <b>професійність для нас не має кінцевої точки.</b></p></div>
-        <div class="square"><p data-en="We grow as a team to create a better space for those who trust us. And it is all about one thing: &lt;b&gt;an atmosphere you want to stay in.&lt;/b&gt;">Ми ростемо як команда, щоб створювати якісніший простір для тих, хто нам довіряє. І все це — про одне: <b>атмосферу, у якій хочеться залишитися.</b></p></div>
+        <div class="square sq-green"><p data-en="&lt;b&gt;We are a team&lt;/b&gt; of people, each creating their own part of the whole: some work directly with a person and their inner world, someone shapes the visual concept, someone takes care of details that go unnoticed, yet create a sense of wholeness."><b>Ми — команда</b> людей, кожен із яких створює свою частину цілого: хтось працює безпосередньо з людиною та її внутрішнім світом; хтось формує візуальну концепцію; хтось відповідає за деталі, які непомітні, але саме вони створюють відчуття цілісності.</p></div>
+        <div class="square sq-orange"><p data-en="We believe a good space is born where professionalism meets attention to detail. So our team is &lt;b&gt;not about sameness, but about diversity working together.&lt;/b&gt;">Ми віримо, що якісний простір народжується там, де професіоналізм зустрічається з увагою до деталей. Тому наша команда — <b>не про однаковість, а про різноманітність, яка працює разом.</b></p></div>
+        <div class="square sq-blue"><p data-en="We keep learning, take supervision, discuss difficult cases and grow — because for us &lt;b&gt;professionalism has no finish line.&lt;/b&gt;">Ми постійно навчаємося, супервізуємося, обговорюємо складні випадки й розвиваємося — тому що <b>професійність для нас не має кінцевої точки.</b></p></div>
+        <div class="square sq-beige"><p data-en="We grow as a team to create a better space for those who trust us. And it is all about one thing: &lt;b&gt;an atmosphere you want to stay in.&lt;/b&gt;">Ми ростемо як команда, щоб створювати якісніший простір для тих, хто нам довіряє. І все це — про одне: <b>атмосферу, у якій хочеться залишитися.</b></p></div>
       </div>
     </div>
   </section>
 
   <!-- 9. Засновниця — beige -->
   <section id="founder" class="sand founder-sec">
-    <img class="watermark" src="assets/mark-2.png" alt="" aria-hidden="true">
+    <img class="watermark" src="assets/mark-2.webp" alt="" aria-hidden="true" width="700" height="621" loading="lazy">
     <div class="wrap founder-grid">
       <div class="founder-photo">
-        <img class="founder-img" src="assets/olena-full.jpg" alt="Олена СТОРОЖ у кріслі в кабінеті студії" data-en-alt="Olena STOROZH in an armchair at the studio" width="850" height="1280">
+        <img class="founder-img" src="assets/olena-full.jpg" alt="Олена СТОРОЖ у кріслі в кабінеті студії" data-en-alt="Olena STOROZH in an armchair at the studio" width="850" height="1280" loading="lazy" decoding="async">
       </div>
       <div class="founder-copy">
         <div class="script" data-en="Studio founder">Засновниця студії</div>
@@ -312,12 +319,12 @@
   <section id="services" class="services">
     <div class="wrap stack">
       <div class="services-head">
+        <img src="assets/inf-ye-2.webp" alt="" width="260" height="104" loading="lazy">
         <div class="script" data-en="Psychological studio">Психологічна студія</div>
         <h2 class="mt mt-orange" data-en="Studio services">Послуги студії</h2>
-        <img src="assets/inf-ye-2.png" alt="" width="260">
       </div>
       <div class="svc-grid">
-        <article class="svc frame"><div class="frame-inner">
+        <article class="svc"><div class="frame-inner">
           <span class="svc-label" data-en="Service">Послуга</span>
           <h3 data-en="Psychological counselling">Психологічне консультування</h3>
           <p class="svc-lead" data-en="Short-term help to understand your emotions and find a way through life’s difficulties.">Короткострокова допомога, щоб розібратися в емоціях і знайти вихід зі складної життєвої ситуації.</p>
@@ -327,7 +334,7 @@
           <a href="#booking" class="svc-book" data-svc="consult" data-en="Book →">Записатися →</a>
         </div></article>
 
-        <article class="svc frame"><div class="frame-inner">
+        <article class="svc"><div class="frame-inner">
           <span class="svc-label" data-en="Service">Послуга</span>
           <h3 data-en="Individual psychotherapy">Індивідуальна психотерапія</h3>
           <p class="svc-lead" data-en="Long-term personal work with a psychotherapist in a safe space.">Довготривала особиста робота з психотерапевтом у безпечному просторі.</p>
@@ -337,7 +344,7 @@
           <a href="#booking" class="svc-book" data-svc="ind-therapy" data-en="Book →">Записатися →</a>
         </div></article>
 
-        <article class="svc frame"><div class="frame-inner">
+        <article class="svc"><div class="frame-inner">
           <span class="svc-label" data-en="Service">Послуга</span>
           <h3 data-en="Group psychotherapy">Групова психотерапія</h3>
           <p class="svc-lead" data-en="Work in a group with a psychotherapist: support, other people’s experience, creative methods.">Робота в групі з психотерапевтом: підтримка, досвід інших, творчі методи.</p>
@@ -347,7 +354,7 @@
           <a href="#booking" class="svc-book" data-svc="group-therapy" data-en="Book →">Записатися →</a>
         </div></article>
 
-        <article class="svc frame"><div class="frame-inner">
+        <article class="svc"><div class="frame-inner">
           <span class="svc-label" data-en="Service">Послуга</span>
           <h3 data-en="Individual and group psychodiagnostics">Індивідуальна та групова психодіагностика</h3>
           <p class="svc-lead" data-en="Tests, questionnaires and observation to understand yourself and your request better.">Тести, опитувальники й спостереження, щоб краще зрозуміти себе та свій запит.</p>
@@ -357,7 +364,7 @@
           <a href="#booking" class="svc-book" data-svc="diag" data-en="Book →">Записатися →</a>
         </div></article>
 
-        <article class="svc frame"><div class="frame-inner">
+        <article class="svc"><div class="frame-inner">
           <span class="svc-label" data-en="Service">Послуга</span>
           <h3 data-en="Socio-psychological training">Соціально-психологічний тренінг</h3>
           <p class="svc-lead" data-en="Active group learning: communication, self-regulation, interaction.">Активне групове навчання: комунікація, саморегуляція, взаємодія.</p>
@@ -367,7 +374,7 @@
           <a href="#booking" class="svc-book" data-svc="training" data-en="Book →">Записатися →</a>
         </div></article>
 
-        <article class="svc frame"><div class="frame-inner">
+        <article class="svc"><div class="frame-inner">
           <span class="svc-label" data-en="Service">Послуга</span>
           <h3 data-en="Psychological events">Психологічні заходи</h3>
           <p class="svc-lead" data-en="Masterclasses, workshops, masterminds and creative meetings, online and in person.">Майстер-класи, воркшопи, мастермайнди та творчі зустрічі онлайн і офлайн.</p>
@@ -393,7 +400,7 @@
   <section class="access" aria-labelledby="access-h">
     <div class="wrap">
       <div class="access-head">
-        <h2 id="access-h" class="script" data-en="Formats of psychological help">Формати психологічної допомоги</h2>
+        <h2 id="access-h" data-en="Formats of psychological help">Формати психологічної допомоги</h2>
         <p data-en="We want psychological support to be available to everyone, wherever you are and whatever language you speak.">Ми прагнемо, щоб психологічна підтримка була доступною кожному незалежно від вашого місця перебування чи мови спілкування.</p>
       </div>
       <ul class="access-list">
@@ -510,7 +517,7 @@
   <section id="ask" class="sand ask-sec">
     <div class="wrap two">
       <div class="ask-text">
-        <img class="ask-heart" src="assets/inf-heart-1.png" alt="" width="220">
+        <img class="ask-heart" src="assets/inf-heart-1.webp" alt="" width="220" height="88" loading="lazy">
         <div class="script" data-en="Hard to reach out?">Важко проявитися?</div>
         <h2 data-en="Write to us anonymously">Напишіть нам анонімно</h2>
         <p class="muted" data-en="Briefly describe what is bothering you — the administrator will find a specialist and write to you wherever is convenient. A nickname is enough.">Коротко опишіть, що вас турбує, — адміністратор підбере фахівчиню і напише туди, куди вам зручно. Можна вказати лише псевдонім.</p>
@@ -548,13 +555,13 @@
     <div class="wrap">
       <div class="gift-grid">
         <div class="gift-cards" aria-hidden="true">
-          <img src="assets/cert-consult.jpg" alt="" width="520" height="727">
-          <img src="assets/cert-orange.jpg" alt="" width="525" height="745">
-          <img src="assets/cert-event.jpg" alt="" width="520" height="727">
+          <img src="assets/cert-consult.jpg" alt="" width="520" height="727" loading="lazy" decoding="async">
+          <img src="assets/cert-orange.jpg" alt="" width="525" height="745" loading="lazy" decoding="async">
+          <img src="assets/cert-event.jpg" alt="" width="520" height="727" loading="lazy" decoding="async">
         </div>
         <div class="gift-text">
           <div class="script" data-en="Gift certificate">Подарунковий сертифікат</div>
-          <h2 class="mt mt-white" data-en="Give the gift of self-care">Подаруйте турботу про себе</h2>
+          <h2 class="mt mt-orange" data-en="Give the gift of self-care">Подаруйте турботу про себе</h2>
           <p data-en="A certificate for an individual consultation or a psychological event. Valid for 3 months; you can choose the card colour: beige, green, grey, blue or orange.">Сертифікат на індивідуальну консультацію або психологічний захід. Діє 3 місяці, можна обрати колір картки: бежевий, зелений, сірий, блакитний чи оранжевий.</p>
           <div><a href="#cert-order" class="btn" data-en="Order a certificate">Замовити сертифікат</a></div>
         </div>
@@ -562,11 +569,11 @@
 
       <div class="cert-order" id="cert-order">
         <div class="co-preview">
-          <img class="co-prev" data-color="beige" src="assets/cert-beige.jpg" alt="Бежевий сертифікат" data-en-alt="Beige certificate" width="525" height="745">
-          <img class="co-prev" data-color="green" src="assets/cert-green.jpg" alt="Зелений сертифікат" data-en-alt="Green certificate" width="525" height="745" hidden>
-          <img class="co-prev" data-color="grey" src="assets/cert-grey.jpg" alt="Сірий сертифікат" data-en-alt="Grey certificate" width="525" height="745" hidden>
-          <img class="co-prev" data-color="blue" src="assets/cert-blue.jpg" alt="Блакитний сертифікат" data-en-alt="Blue certificate" width="525" height="745" hidden>
-          <img class="co-prev" data-color="orange" src="assets/cert-orange.jpg" alt="Оранжевий сертифікат" data-en-alt="Orange certificate" width="525" height="745" hidden>
+          <img class="co-prev" data-color="beige" src="assets/cert-beige.jpg" alt="Бежевий сертифікат" data-en-alt="Beige certificate" width="525" height="745" loading="lazy" decoding="async">
+          <img class="co-prev" data-color="green" src="assets/cert-green.jpg" alt="Зелений сертифікат" data-en-alt="Green certificate" width="525" height="745" hidden loading="lazy" decoding="async">
+          <img class="co-prev" data-color="grey" src="assets/cert-grey.jpg" alt="Сірий сертифікат" data-en-alt="Grey certificate" width="525" height="745" hidden loading="lazy" decoding="async">
+          <img class="co-prev" data-color="blue" src="assets/cert-blue.jpg" alt="Блакитний сертифікат" data-en-alt="Blue certificate" width="525" height="745" hidden loading="lazy" decoding="async">
+          <img class="co-prev" data-color="orange" src="assets/cert-orange.jpg" alt="Оранжевий сертифікат" data-en-alt="Orange certificate" width="525" height="745" hidden loading="lazy" decoding="async">
           <div class="co-cap script" data-en="This is how your certificate will look">Так виглядатиме сертифікат</div>
         </div>
         <form class="co-form" id="cert-form">
@@ -651,11 +658,11 @@
           <div class="script" data-en="We are on social media">Ми в соцмережах</div>
           <p data-en="Write to us in any messenger you like">Пишіть нам у зручний месенджер</p>
           <div class="sw-row">
-            <a class="sw-badge" href="https://invite.viber.com/?g2=AQB1KYA%2F3m0fyVVpf6fesJ9n5O%2Bpk1aJcmXquD31Rywo4jflCxW1bdBs0DW3oPe4" target="_blank" rel="noopener"><img src="assets/s-viber.webp" alt="" width="340" height="342"><span>Viber</span></a>
-            <a class="sw-badge" href="https://t.me/+VFQ1hcgiQmEyZWEy" target="_blank" rel="noopener"><img src="assets/s-telegram.webp" alt="" width="340" height="353"><span>Telegram</span></a>
-            <a class="sw-badge" href="https://www.instagram.com/studio.iam.sov/" target="_blank" rel="noopener"><img src="assets/s-instagram.webp" alt="" width="340" height="323"><span>Instagram</span></a>
-            <a class="sw-badge" href="https://www.tiktok.com/@studio.iam.sov" target="_blank" rel="noopener"><img src="assets/s-tiktok.webp" alt="" width="340" height="361"><span>TikTok</span></a>
-            <a class="sw-badge" href="https://www.facebook.com/share/1CG8r5CAtv/" target="_blank" rel="noopener"><img src="assets/s-facebook.webp" alt="" width="340" height="338"><span>Facebook</span></a>
+            <a class="sw-badge" href="https://invite.viber.com/?g2=AQB1KYA%2F3m0fyVVpf6fesJ9n5O%2Bpk1aJcmXquD31Rywo4jflCxW1bdBs0DW3oPe4" target="_blank" rel="noopener"><img src="assets/s-viber.webp" alt="" width="340" height="342" loading="lazy" decoding="async"><span>Viber</span></a>
+            <a class="sw-badge" href="https://t.me/+VFQ1hcgiQmEyZWEy" target="_blank" rel="noopener"><img src="assets/s-telegram.webp" alt="" width="340" height="353" loading="lazy" decoding="async"><span>Telegram</span></a>
+            <a class="sw-badge" href="https://www.instagram.com/studio.iam.sov/" target="_blank" rel="noopener"><img src="assets/s-instagram.webp" alt="" width="340" height="323" loading="lazy" decoding="async"><span>Instagram</span></a>
+            <a class="sw-badge" href="https://www.tiktok.com/@studio.iam.sov" target="_blank" rel="noopener"><img src="assets/s-tiktok.webp" alt="" width="340" height="361" loading="lazy" decoding="async"><span>TikTok</span></a>
+            <a class="sw-badge" href="https://www.facebook.com/share/1CG8r5CAtv/" target="_blank" rel="noopener"><img src="assets/s-facebook.webp" alt="" width="340" height="338" loading="lazy" decoding="async"><span>Facebook</span></a>
           </div>
         </div>
       </div>
@@ -670,7 +677,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="brand-line">
-      <img src="assets/logo.png" alt="Логотип студії «Яє»" data-en-alt="Studio Yae logo" width="56">
+      <img src="assets/logo-sm.webp" alt="Логотип студії «Яє»" data-en-alt="Studio Yae logo" width="56" height="47" loading="lazy">
       <div>
         <b data-en="Yae psychological studio">Психологічна студія «Яє»</b>
         <span class="script" data-en="Create the best version of Yourself">Створи найкращу версію Себе</span>
