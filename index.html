@@ -7,19 +7,17 @@
 <meta name="description" content="Психологічна студія «Яє» у Рівному: консультування, психотерапія, психодіагностика, соціально-психологічний тренінг та психологічні заходи для дітей, підлітків, дорослих, пар і сімей. Офлайн і онлайн.">
 <meta property="og:title" content="Психологічна студія «Яє» — Рівне">
 <meta property="og:description" content="Створи найкращу версію Себе.">
-<meta property="og:image" content="assets/team.jpg">
+<meta property="og:image" content="assets/team-full.jpg">
 <link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Playfair+Display:wght@400;600;700&family=Marck+Script&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script>
-  // Motion unless the visitor asked for less; intro once per visit; language: saved choice, else the browser's
+  // Motion unless the visitor asked for less; the logo intro on every load; language: saved choice, else the browser's
   (function () {
     var d = document.documentElement;
-    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('motion');
-    var seen = false; try { seen = sessionStorage.getItem('yae_intro') === '1'; } catch (e) {}
-    if (!seen && d.classList.contains('motion')) d.classList.add('intro-on');
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('motion', 'intro-on');
     var lang = null; try { lang = localStorage.getItem('yae_lang'); } catch (e) {}
     if (!lang) lang = /^(uk|ru|be)\b/i.test(navigator.language || 'uk') ? 'uk' : 'en';
     d.lang = lang === 'en' ? 'en' : 'uk';
@@ -33,7 +31,7 @@
 <div class="intro" id="intro" aria-hidden="true">
   <video id="introVideo" src="assets/intro.mp4" playsinline preload="auto"></video>
   <div class="intro-btns">
-    <button type="button" id="introSound" class="intro-btn" hidden data-en="Sound on">Увімкнути звук</button>
+    <button type="button" id="introSound" class="intro-btn sound" hidden><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span data-en="Turn on sound">Увімкнути звук</span></button>
     <button type="button" id="introSkip" class="intro-btn" data-en="Skip">Пропустити</button>
   </div>
 </div>
@@ -66,20 +64,22 @@
 </header>
 
 <main>
-  <!-- 3. Hero: pastel landscape, no sound -->
+  <!-- 3. Hero: the painting, the logo draws itself in milk-white with a soft orange glow -->
   <section id="top" class="hero">
-    <video class="hero-bg" id="heroVideo" src="assets/hero.mp4" poster="assets/hero-poster.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+    <video class="hero-bg" id="heroVideo" src="assets/hero-mid.mp4" poster="assets/hero-mid-poster.jpg" muted loop playsinline preload="auto" aria-hidden="true"></video>
+    <video id="logoClip" class="logo-clip" src="assets/logo-clip.mp4" muted playsinline preload="auto" aria-hidden="true"></video>
     <div class="hero-veil" aria-hidden="true"></div>
     <div class="hero-in">
       <h1 class="sr" data-en="Yae psychological studio in Rivne">Психологічна студія «Яє» у Рівному</h1>
-      <div class="lockup frame">
-        <div class="frame-inner">
-          <img class="ua-only" src="assets/wordmark.png" alt="Психологічна студія" width="280">
-          <span class="en-only script lock-top">Psychological studio</span>
-          <img class="lock-logo" src="assets/logo.png" alt="Логотип студії «Яє»" data-en-alt="Studio Yae logo" width="150">
-          <img class="ua-only" src="assets/slogan.png" alt="Створи найкращу версію Себе" width="320">
-          <span class="en-only script lock-bottom">Create the best version of Yourself</span>
+      <div class="lockup" id="lockup" aria-hidden="true">
+        <div class="rule" id="rule1"></div>
+        <div class="lk-text lk-top" id="topText" data-en="Psychological studio">Психологічна студія</div>
+        <div class="lk-logo">
+          <canvas id="logoCanvas" width="640" height="520"></canvas>
+          <img class="lk-still" src="assets/logo.png" alt="" width="300">
         </div>
+        <div class="lk-text lk-bottom" id="bottomText" data-en="Create the best version of Yourself">Створи найкращу версію Себе</div>
+        <div class="rule" id="rule2"></div>
       </div>
       <div class="actions">
         <a href="#booking" class="btn" data-en="Book a consultation">Записатися на консультацію</a>
@@ -93,7 +93,7 @@
     <div class="wrap about-grid">
       <div class="about-text">
         <div class="script" data-en="About the studio">Про студію</div>
-        <h2 data-en="«Yae» in Rivne">«Яє» у Рівному</h2>
+        <h2 class="mt mt-green" data-en="«Yae» in Rivne">«Яє» у Рівному</h2>
         <p data-en="«Yae» is a psychological studio in Rivne with a team of specialist psychologists. We support children, teens / young adults, adults, couples / families – carefully, professionally and without judgement.">«Яє» – це психологічна студія в Рівному, де працює команда спеціалістів психологів. Ми супроводжуємо дітей, підлітків / юнаків, дорослих, пари / сім’ї – обережно, професійно та без оцінювання.</p>
         <p data-en="Each specialist at the studio has her own area of work, so we find the support that truly suits you.">Кожна фахівчиня студії має власний напрям роботи, тож ми підбираємо підтримку, що справді підходить саме вам.</p>
         <div class="tags">
@@ -104,7 +104,7 @@
         </div>
       </div>
       <figure class="studio-card">
-        <img src="assets/studio.jpg" alt="Кабінет студії «Яє»: два крісла і столик біля вікна" data-en-alt="Studio Yae room: two armchairs and a table by the window" width="720" height="720">
+        <img src="assets/studio-full.jpg" alt="Кабінет студії «Яє»: картина на стіні, два крісла і столик біля вікна" data-en-alt="Studio Yae room: a painting on the wall, two armchairs and a table by the window" width="734" height="1280">
         <figcaption class="studio-info">
           <a href="https://maps.app.goo.gl/kxekSsByFt43Rvud6" target="_blank" rel="noopener">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
@@ -127,7 +127,7 @@
   <section id="story" class="story">
     <div class="wrap story-grid">
       <div class="story-photo">
-        <img src="assets/team.jpg" alt="Команда студії «Яє»" data-en-alt="The Yae studio team" width="1000" height="902">
+        <img src="assets/team-full.jpg" alt="Команда студії «Яє»" data-en-alt="The Yae studio team" width="1000" height="1515">
       </div>
       <div class="story-text">
         <div class="script" data-en="Our story">Наша історія</div>
@@ -140,7 +140,7 @@
   </section>
 
   <!-- 6. Цінності на пейзажі — colour -->
-  <section id="values" class="land values-land" style="--bg:url('assets/land-lake.jpg')">
+  <section id="values" class="land values-land" style="--bg:url('assets/land-lake-mid.jpg')">
     <div class="wrap stack">
       <div class="head center">
         <div class="script" data-en="What we value">Що для нас важливо</div>
@@ -166,9 +166,9 @@
   <section id="team" class="sand team">
     <div class="wrap stack">
       <div class="team-head">
-        <img class="emblem" src="assets/logo.png" alt="Знак студії «Яє»" data-en-alt="Studio Yae sign" width="120">
+        <img class="emblem" src="assets/inf-ye-3.png" alt="" width="260">
         <div class="script" data-en="Team">Команда</div>
-        <h2 data-en="We are a team">Ми — команда</h2>
+        <h2 class="mt mt-green" data-en="We are a team">Ми — команда</h2>
         <div class="chips">
           <span data-en="Different personalities">Різні характери</span>
           <span data-en="Different experience">Різний досвід</span>
@@ -231,7 +231,7 @@
   </section>
 
   <!-- 8. Ми — команда: floating squares on a landscape — colour -->
-  <section id="heart" class="land heart-land" style="--bg:url('assets/land-mountains.jpg')">
+  <section id="heart" class="land heart-land" style="--bg:url('assets/land-mountains-mid.jpg')">
     <div class="wrap stack">
       <div class="head center">
         <div class="script" data-en="Who we are">Хто ми</div>
@@ -247,11 +247,11 @@
 
   <!-- 9. Засновниця — beige -->
   <section id="founder" class="sand founder-sec">
+    <img class="watermark" src="assets/mark-2.png" alt="" aria-hidden="true">
     <div class="wrap founder-grid">
       <div class="founder-photo">
-        <div class="frame"><div class="frame-inner">
-          <img src="assets/olena-chair.jpg" alt="Олена СТОРОЖ у кріслі в кабінеті студії" data-en-alt="Olena STOROZH in an armchair at the studio" width="640" height="966">
-        </div></div>
+        <img class="founder-img" src="assets/olena-full.jpg" alt="Олена СТОРОЖ у кріслі в кабінеті студії" data-en-alt="Olena STOROZH in an armchair at the studio" width="850" height="1280">
+        <video class="founder-sign" id="olenaSign" src="assets/olena-sign.mp4" poster="assets/olena-sign-end.jpg" muted playsinline preload="none" aria-hidden="true"></video>
       </div>
       <div class="founder-copy">
         <div class="script" data-en="Studio founder">Засновниця студії</div>
@@ -314,8 +314,8 @@
     <div class="wrap stack">
       <div class="services-head">
         <div class="script" data-en="Psychological studio">Психологічна студія</div>
-        <h2 data-en="Studio services">Послуги студії</h2>
-        <img src="assets/logo.png" alt="Логотип студії «Яє»" data-en-alt="Studio Yae logo" width="130">
+        <h2 class="mt mt-orange" data-en="Studio services">Послуги студії</h2>
+        <img src="assets/inf-ye-2.png" alt="" width="260">
       </div>
       <div class="svc-grid">
         <article class="svc frame"><div class="frame-inner">
@@ -416,12 +416,12 @@
   </section>
 
   <!-- 12. Записатися за хвилину — beige -->
-  <section id="booking" class="sand booking">
+  <section id="booking" class="booking">
     <div class="wrap frame">
       <div class="frame-inner">
         <div class="head center">
           <div class="script" data-en="No waiting on the line">Без дзвінків і очікування</div>
-          <h2 data-en="Book in a minute">Записатися — за хвилину</h2>
+          <h2 class="mt mt-green" data-en="Book in a minute">Записатися — за хвилину</h2>
         </div>
         <div class="steps-list">
           <div class="step"><span class="n">1</span><div><h3 data-en="Choose a service">Оберіть послугу</h3><p class="muted" data-en="And a specialist, if you already know who you’d like to see.">І фахівчиню, якщо вже знаєте, до кого хочете.</p></div></div>
@@ -508,9 +508,10 @@
   </section>
 
   <!-- 13. Анонімно — white -->
-  <section id="ask" class="ask-sec">
+  <section id="ask" class="sand ask-sec">
     <div class="wrap two">
       <div class="ask-text">
+        <img class="ask-heart" src="assets/inf-heart-1.png" alt="" width="220">
         <div class="script" data-en="Hard to reach out?">Важко проявитися?</div>
         <h2 data-en="Write to us anonymously">Напишіть нам анонімно</h2>
         <p class="muted" data-en="Briefly describe what is bothering you — the administrator will find a specialist and write to you wherever is convenient. A nickname is enough.">Коротко опишіть, що вас турбує, — адміністратор підбере фахівчиню і напише туди, куди вам зручно. Можна вказати лише псевдонім.</p>
@@ -519,7 +520,7 @@
           <span data-en="Only the studio administrator sees your message. We never share data with third parties.">Повідомлення бачить лише адміністратор студії. Ми не передаємо дані третім особам.</span>
         </div>
       </div>
-      <div class="frame ask-frame"><div class="frame-inner">
+      <div class="ask-frame"><div class="ask-card">
         <form class="ask" id="ask-form">
           <div class="ask-fields" id="ask-fields">
             <div class="field">
@@ -554,7 +555,7 @@
         </div>
         <div class="gift-text">
           <div class="script" data-en="Gift certificate">Подарунковий сертифікат</div>
-          <h2 data-en="Give the gift of self-care">Подаруйте турботу про себе</h2>
+          <h2 class="mt mt-white" data-en="Give the gift of self-care">Подаруйте турботу про себе</h2>
           <p data-en="A certificate for an individual consultation or a psychological event. Valid for 3 months; you can choose the card colour: beige, green, grey, blue or orange.">Сертифікат на індивідуальну консультацію або психологічний захід. Діє 3 місяці, можна обрати колір картки: бежевий, зелений, сірий, блакитний чи оранжевий.</p>
           <div><a href="#cert-order" class="btn" data-en="Order a certificate">Замовити сертифікат</a></div>
         </div>
@@ -613,7 +614,7 @@
               <label for="co-msg" data-en="Comment">Коментар</label>
               <textarea id="co-msg" name="comment" rows="3" placeholder="Наприклад, текст привітання або бажана дата" data-en-ph="For example, a greeting or a preferred date"></textarea>
             </div>
-            <button type="submit" class="btn btn-orange" data-en="Order a certificate">Замовити сертифікат</button>
+            <button type="submit" class="btn" data-en="Order a certificate">Замовити сертифікат</button>
           </div>
           <div class="form-ok" id="cert-ok" hidden><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A1718" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span class="ok-text" data-en="Thank you! We will contact you to confirm the certificate.">Дякуємо! Ми зв’яжемося з вами, щоб підтвердити сертифікат.</span></div>
         </form>
@@ -626,7 +627,7 @@
     <div class="wrap stack">
       <div class="head center">
         <div class="script" data-en="Contacts">Контакти</div>
-        <h2 data-en="How to reach us">Як з нами зв’язатися</h2>
+        <h2 class="mt mt-blue" data-en="How to reach us">Як з нами зв’язатися</h2>
       </div>
       <div class="contacts-grid">
         <div class="contact-card">
