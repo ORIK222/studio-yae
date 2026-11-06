@@ -153,8 +153,6 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 
 /* ---------- Landscape sections ---------- */
 .land{position:relative;background:var(--bg) center/cover no-repeat #6E7F72;isolation:isolate}
-.values-land,.who-land{display:grid;align-content:center}
-.values-land > .wrap,.who-land > .wrap{width:100%}
 .land::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,26,22,.20),rgba(20,26,22,.04) 40%,rgba(20,26,22,.18))}
 .values-land{background-position:22% 6%}
 .land .head .script{color:#FFF8EE;font-size:44px;text-shadow:0 2px 14px rgba(0,0,0,.45)}
@@ -199,7 +197,9 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 
 /* ---------- 8. Хто ми ---------- */
 /* Same composition as the lake block: a band of the studio's paintings, the ribbon through the middle */
-.who-land{--bg:url('assets/who-band.webp');padding:62px 24px 86px}
+.who-land{--bg:url('assets/who-band.webp');padding:34px 24px 72px}
+.who-land .head .script{font-size:40px}
+.who-land .stack{gap:26px}
 /* Longest text in the middle, the two short ones at the sides, each card only as tall as its text */
 .who-values{grid-template-columns:minmax(0,.82fr) minmax(0,1.3fr) minmax(0,.82fr);align-items:center}
 .who-values .value:nth-child(1){order:2}
@@ -460,7 +460,7 @@ form.ask .btn{height:56px}
   .crew-item .crew-role{align-self:start}
   .crew-item p{grid-column:1/-1;font-size:17px;margin-top:10px}
 
-  .who-land{--bg:url('assets/who-band-sm.webp');padding:64px 16px}
+  .who-land{--bg:url('assets/who-band-sm.webp');padding:36px 16px 56px}
 
   .founder-photo{position:relative;top:0}
   .founder-img{max-width:340px;border-radius:24px}
