@@ -197,7 +197,7 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 
 /* ---------- 8. Хто ми ---------- */
 /* Same composition as the lake block: a band of the studio's paintings, the ribbon through the middle */
-.who-land{--bg:url('assets/who-band.webp');padding:34px 24px 132px}
+.who-land{--bg:url('assets/who-band.webp?v=202611061221');padding:34px 24px 132px}
 .who-land .head .script{font-size:40px}
 .who-land .stack{gap:26px}
 /* Longest text in the middle, the two short ones at the sides, each card only as tall as its text */
@@ -460,7 +460,7 @@ form.ask .btn{height:56px}
   .crew-item .crew-role{align-self:start}
   .crew-item p{grid-column:1/-1;font-size:17px;margin-top:10px}
 
-  .who-land{--bg:url('assets/who-band-sm.webp');padding:36px 16px 56px}
+  .who-land{--bg:url('assets/who-band-sm.webp?v=202611061221');padding:36px 16px 56px}
 
   .founder-photo{position:relative;top:0}
   .founder-img{max-width:340px;border-radius:24px}
