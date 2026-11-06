@@ -194,6 +194,7 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 .crew-item b{font-size:25px;line-height:1.15}
 .crew-role{font-family:var(--script);font-size:24px;line-height:1.1;color:var(--brown)}
 .crew-item p{font-size:18px;color:var(--text);line-height:1.35}
+.crew-scope{background:var(--sand);border-radius:999px;padding:6px 16px;font-size:16px;font-weight:600;line-height:1.3;margin-top:auto}
 
 /* ---------- 8. Хто ми ---------- */
 /* Same composition as the lake block: a band of the studio's paintings, the ribbon through the middle */
@@ -459,6 +460,7 @@ form.ask .btn{height:56px}
   .crew-item b{align-self:end}
   .crew-item .crew-role{align-self:start}
   .crew-item p{grid-column:1/-1;font-size:17px;margin-top:10px}
+  .crew-scope{grid-column:1/-1;justify-self:start;font-size:15px;padding:5px 12px;margin-top:6px}
 
   .who-land{--bg:url('assets/who-band-sm.webp?v=202611061221');padding:36px 16px 56px}
 
