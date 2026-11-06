@@ -74,6 +74,12 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 .site-header.scrolled,.site-header.menu-open{background:#fff;border-bottom-color:var(--beige);box-shadow:0 8px 24px rgba(26,23,24,.08)}
 .site-header .brand img,.site-header .site-nav > a:not(.btn),.site-header .lang button,.site-header .brand-en,.site-header .burger{transition:color .4s ease,filter .4s ease,background-color .4s ease,border-color .4s ease,text-shadow .4s ease}
 .site-header:not(.scrolled):not(.menu-open) .brand img{filter:brightness(0) invert(1) drop-shadow(0 1px 4px rgba(0,0,0,.45))}
+.site-header:not(.scrolled):not(.menu-open) .brand > img{filter:brightness(0) invert(1) drop-shadow(2px 2px 0 rgba(232,132,63,.8)) drop-shadow(0 1px 4px rgba(0,0,0,.4))}
+.brand > img{filter:drop-shadow(2px 2px 0 rgba(232,132,63,.55))}
+/* Orange brush stroke behind the wordmark so the white letters read over the painting */
+.brand-word{position:relative;isolation:isolate;display:inline-flex;align-items:center}
+.brand-word::before{content:"";position:absolute;left:-10px;right:-12px;top:50%;height:115%;transform:translateY(-46%) rotate(-2deg);z-index:-1;pointer-events:none;
+  background:url('assets/stroke-orange-bold.webp') center/100% 100% no-repeat,url('assets/stroke-orange-bold.webp') 45% 55%/96% 90% no-repeat}
 .site-header:not(.scrolled):not(.menu-open) :is(.site-nav > a:not(.btn),.lang button,.lang,.brand-en){color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.5)}
 .site-header:not(.scrolled):not(.menu-open) .burger{color:#fff;background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.8)}
 .site-header:not(.scrolled):not(.menu-open) .site-nav .btn{box-shadow:0 8px 20px rgba(0,0,0,.25)}
@@ -106,15 +112,13 @@ html.intro-out .intro{opacity:0;pointer-events:none}
   filter:drop-shadow(0 1px 3px rgba(0,0,0,.35)) drop-shadow(0 0 6px rgba(240,150,80,.45))}
 .lk-text{font-family:var(--script);color:#FFFAF0;white-space:nowrap;line-height:1.15;
   text-shadow:0 1px 2px rgba(0,0,0,.5),0 2px 10px rgba(0,0,0,.3),0 0 22px rgba(236,140,70,.55)}
-.lk-top{font-size:calc(70 * var(--k));margin-top:calc(18 * var(--k));position:relative;isolation:isolate;padding:0 .3em}
-.lk-top::before{content:"";position:absolute;left:-.2em;right:-.3em;top:52%;height:1.35em;transform:translateY(-50%) rotate(-2deg);z-index:-1;
-  background:url('assets/stroke-orange-bold.webp') center/100% 100% no-repeat,url('assets/stroke-orange-bold.webp') 45% 55%/96% 90% no-repeat}
+.lk-top{font-size:calc(70 * var(--k));margin-top:calc(18 * var(--k))}
 .lk-bottom{font-size:calc(50 * var(--k));margin-bottom:calc(18 * var(--k))}
 .lk-logo{position:relative;width:calc(440 * var(--k));height:calc(358 * var(--k));margin:calc(10 * var(--k)) 0}
 #logoCanvas{width:100%;height:100%;display:block;
-  filter:drop-shadow(calc(7 * var(--k)) calc(5 * var(--k)) 0 #E8843F) drop-shadow(0 3px 8px rgba(0,0,0,.35))}
+  filter:drop-shadow(0 0 6px rgba(240,128,50,.75)) drop-shadow(0 0 18px rgba(236,120,40,.5)) drop-shadow(0 2px 3px rgba(0,0,0,.35))}
 /* Still version (no motion, or the browser can't read the video): the logo file turned milk-white */
-.lk-still{display:none;position:absolute;inset:8% 18%;width:64%;height:auto;margin:auto;filter:brightness(0) invert(1) drop-shadow(5px 4px 0 #E8843F) drop-shadow(0 3px 8px rgba(0,0,0,.35))}
+.lk-still{display:none;position:absolute;inset:8% 18%;width:64%;height:auto;margin:auto;filter:invert(1) sepia(.25) brightness(1.05) drop-shadow(0 0 8px rgba(240,128,50,.7)) drop-shadow(0 2px 3px rgba(0,0,0,.4))}
 .lockup.still #logoCanvas{display:none}
 .lockup.still .lk-still{display:block}
 .motion .lockup:not(.still) .rule{transform:scaleX(0);opacity:0}
@@ -192,7 +196,14 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 
 /* ---------- 8. Хто ми ---------- */
 /* Same composition as the lake block: a band of the studio's paintings, the ribbon through the middle */
-.who-land{--bg:url('assets/who-band.webp');padding:110px 24px}
+.who-land{--bg:url('assets/who-band.webp');padding:62px 24px 86px}
+/* Longest text in the middle, the two short ones at the sides, each card only as tall as its text */
+.who-values{grid-template-columns:minmax(0,.82fr) minmax(0,1.3fr) minmax(0,.82fr);align-items:center}
+.who-values .value:nth-child(1){order:2}
+.who-values .value:nth-child(2){order:1}
+.who-values .value:nth-child(3){order:3}
+.who-values .value:not(:nth-child(1)){padding:22px 22px}
+.who-values .value:not(:nth-child(1)) p{font-size:17px}
 
 /* ---------- 9. Founder ---------- */
 .founder-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
@@ -229,7 +240,6 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 .svc .frame-inner{width:100%;height:100%;background:#fff;border-radius:26px;box-shadow:var(--depth);padding:28px 26px 24px;display:flex;flex-direction:column;gap:10px}
 .svc-label{font-family:var(--script);font-size:22px;color:var(--brown);line-height:1}
 .svc h3{font-size:27px}
-.svc-lead{color:var(--text);font-size:19px}
 .svc details{margin-top:auto}
 .svc summary{cursor:pointer;font-weight:700;list-style:none;display:inline-flex;align-items:center;gap:8px;padding:6px 0}
 .svc summary::-webkit-details-marker{display:none}
@@ -352,6 +362,7 @@ form.ask .btn{height:56px}
 .site-footer .links{display:flex;flex-wrap:wrap;gap:8px 24px}
 .site-footer .links a{padding:10px 0}
 .copy{flex-basis:100%;font-size:15px;color:var(--line)}
+.credit{flex-basis:100%;font-size:14px;color:var(--line);opacity:.85;margin-top:-6px;letter-spacing:.02em}
 
 /* Privacy dialog */
 .privacy{border:0;border-radius:26px;padding:34px 32px;max-width:620px;width:calc(100% - 32px);color:var(--ink);font-family:var(--serif)}
@@ -364,6 +375,8 @@ form.ask .btn{height:56px}
 @media (max-width:1060px){
   .svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .values{grid-template-columns:1fr;max-width:620px;margin:0 auto;width:100%}
+  .who-values{grid-template-columns:1fr}
+  .who-values .value{order:0!important}
 }
 @media (max-width:980px){
   .site-nav{gap:6px 18px;font-size:18px}
@@ -382,8 +395,8 @@ form.ask .btn{height:56px}
 
   .site-header .wrap{padding:10px 16px;gap:10px}
   .brand{gap:8px}
-  .brand img:first-child{width:40px}
-  .brand img:last-child{width:112px}
+  .brand > img{width:40px}
+  .brand-word img{width:112px}
   .brand-en{font-size:20px}
   .quick .btn-outline{flex:1 1 140px}
   .lang,.lang button{font-size:16px}

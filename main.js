@@ -76,14 +76,14 @@ var CONFIG = {
   function win(t, a) { return clamp((t - a[0]) / (a[1] - a[0])); }
   function sm(a, b, x) { x = clamp((x - a) / (b - a)); return x * x * (3 - 2 * x); }
   var LW = cv.width, LH = cv.height, clipOn = false, lastT = -1, cleared = true;
-  // The logo animation is dark on white: turn it into a white logo (the orange shadow is added in CSS)
+  // The logo animation is dark on white: turn it into a milk-white logo with a soft orange accent
   function paintLogo() {
     cx.drawImage(clip, 0, 0, LW, LH);
     var im = cx.getImageData(0, 0, LW, LH), d = im.data;
     for (var i = 0; i < d.length; i += 4) {
       var r = d[i], g = d[i + 1], b = d[i + 2], dk = (255 - (r + g + b) / 3) / 255, wa = clamp((r - b - 6) / 16);
       var am = sm(.30, .70, dk) * (1 - wa), aa = sm(.06, .14, dk) * wa * (1 - sm(.55, .75, dk)), a = Math.max(am, aa), t = aa / (am + aa + 1e-4);
-      d[i] = 255; d[i + 1] = 253; d[i + 2] = 248; d[i + 3] = a * 255;   // pure white letters; the orange shadow comes from CSS
+      d[i] = 255 - 13 * t; d[i + 1] = 250 - 108 * t; d[i + 2] = 238 - 158 * t; d[i + 3] = a * 255;
     }
     cx.putImageData(im, 0, 0);
     cleared = false;
