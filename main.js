@@ -338,3 +338,23 @@ var CONFIG = {
     ], 'cert-fields', 'cert-ok');
   });
 })();
+
+/* The two painting blocks («Що для нас важливо» and «Хто ми») always share one height:
+   the taller one sets it, the shorter one centres its content in the extra space */
+(function () {
+  var a = document.querySelector('.values-land'), b = document.querySelector('.who-land');
+  if (!a || !b) return;
+  var raf = 0;
+  function sync() {
+    raf = 0;
+    a.style.minHeight = b.style.minHeight = '';
+    var h = Math.max(a.offsetHeight, b.offsetHeight);
+    a.style.minHeight = b.style.minHeight = h + 'px';
+  }
+  function later() { if (!raf) raf = requestAnimationFrame(sync); }
+  sync();
+  addEventListener('resize', later);
+  addEventListener('load', later);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(later);
+  new MutationObserver(later).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+})();

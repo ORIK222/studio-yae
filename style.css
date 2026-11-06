@@ -153,6 +153,8 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 
 /* ---------- Landscape sections ---------- */
 .land{position:relative;background:var(--bg) center/cover no-repeat #6E7F72;isolation:isolate}
+.values-land,.who-land{display:grid;align-content:center}
+.values-land > .wrap,.who-land > .wrap{width:100%}
 .land::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,26,22,.20),rgba(20,26,22,.04) 40%,rgba(20,26,22,.18))}
 .values-land{background-position:22% 6%}
 .land .head .script{color:#FFF8EE;font-size:44px;text-shadow:0 2px 14px rgba(0,0,0,.45)}
