@@ -75,9 +75,10 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 .site-header .brand img,.site-header .site-nav > a:not(.btn),.site-header .lang button,.site-header .brand-en,.site-header .burger{transition:color .4s ease,filter .4s ease,background-color .4s ease,border-color .4s ease,text-shadow .4s ease}
 .site-header:not(.scrolled):not(.menu-open) .brand img{filter:brightness(0) invert(1) drop-shadow(0 1px 4px rgba(0,0,0,.45))}
 .site-header:not(.scrolled):not(.menu-open) .brand > img{filter:brightness(0) invert(1) drop-shadow(2px 2px 0 rgba(232,132,63,.8)) drop-shadow(0 1px 4px rgba(0,0,0,.4))}
-.brand > img{filter:drop-shadow(2px 2px 0 rgba(232,132,63,.55))}
-/* Orange brush stroke behind the wordmark so the white letters read over the painting */
+/* Over the painting: white wordmark on an orange brush stroke; on the white header the original wordmark, no orange */
 .brand-word{position:relative;isolation:isolate;display:inline-flex;align-items:center}
+.site-header:is(.scrolled,.menu-open) .wm-hero,.site-header:not(.scrolled):not(.menu-open) .wm-plain{display:none}
+.site-header:is(.scrolled,.menu-open) .brand-word::before{display:none}
 .brand-word::before{content:"";position:absolute;left:-10px;right:-12px;top:50%;height:115%;transform:translateY(-46%) rotate(-2deg);z-index:-1;pointer-events:none;
   background:url('assets/stroke-orange-bold.webp') center/100% 100% no-repeat,url('assets/stroke-orange-bold.webp') 45% 55%/96% 90% no-repeat}
 .site-header:not(.scrolled):not(.menu-open) :is(.site-nav > a:not(.btn),.lang button,.lang,.brand-en){color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.5)}
