@@ -65,19 +65,73 @@ var CONFIG = {
   onScroll();
   $('year').textContent = new Date().getFullYear();
 
-  /* ---------- Hero video: still picture for visitors who asked for less motion ---------- */
-  var hv = $('heroVideo');
-  if (!html.classList.contains('motion')) { hv.removeAttribute('autoplay'); hv.pause(); }
+  /* ---------- Hero: the painting plays, and on every loop the logo draws itself (from Ilona's version) ----------
+     Timings follow the painting video's clock, so the logo appears when the ribbons knot together. */
+  var hv = $('heroVideo'), clip = $('logoClip'), lockup = $('lockup'), cv = $('logoCanvas');
+  var cx = null;
+  try { cx = cv.getContext('2d', { willReadFrequently: true }); } catch (e) {}
+  var TL = { logo: [2.96, 4.58], rule1: [4.34, 4.81], top: [4.39, 5.36], rule2: [5.32, 5.78], bottom: [5.36, 6.43], fade: [9.06, 10.31] };
+  function clamp(x) { return Math.max(0, Math.min(1, x)); }
+  function ease(x) { return .5 - .5 * Math.cos(Math.PI * clamp(x)); }
+  function win(t, a) { return clamp((t - a[0]) / (a[1] - a[0])); }
+  function sm(a, b, x) { x = clamp((x - a) / (b - a)); return x * x * (3 - 2 * x); }
+  var LW = cv.width, LH = cv.height, clipOn = false, lastT = -1, cleared = true;
+  // The logo animation is dark on white: turn it into a milk-white logo with a soft orange accent
+  function paintLogo() {
+    cx.drawImage(clip, 0, 0, LW, LH);
+    var im = cx.getImageData(0, 0, LW, LH), d = im.data;
+    for (var i = 0; i < d.length; i += 4) {
+      var r = d[i], g = d[i + 1], b = d[i + 2], dk = (255 - (r + g + b) / 3) / 255, wa = clamp((r - b - 6) / 16);
+      var am = sm(.30, .70, dk) * (1 - wa), aa = sm(.06, .14, dk) * wa * (1 - sm(.55, .75, dk)), a = Math.max(am, aa), t = aa / (am + aa + 1e-4);
+      d[i] = 255 - 13 * t; d[i + 1] = 250 - 108 * t; d[i + 2] = 238 - 158 * t; d[i + 3] = a * 255;
+    }
+    cx.putImageData(im, 0, 0);
+    cleared = false;
+  }
+  function still() { lockup.classList.add('still'); }
+  var topT = $('topText'), botT = $('bottomText'), r1 = $('rule1'), r2 = $('rule2');
+  function heroFrame() {
+    var t = hv.currentTime, local = t - TL.logo[0];
+    if (local < 0) {
+      if (clipOn) { clip.pause(); try { clip.currentTime = 0; } catch (e) {} clipOn = false; }
+      if (!cleared) { cx.clearRect(0, 0, LW, LH); cleared = true; lastT = -1; }
+    } else {
+      if (!clipOn) { try { clip.currentTime = 0; } catch (e) {} clip.play().catch(function () {}); clipOn = true; }
+      else if (!clip.ended && clip.duration && local < clip.duration && Math.abs(clip.currentTime - local) > .25) { try { clip.currentTime = local; } catch (e) {} }
+      if (clip.readyState >= 2 && Math.abs(clip.currentTime - lastT) > .001) {
+        lastT = clip.currentTime;
+        try { paintLogo(); } catch (e) { still(); }   // e.g. opened straight from a folder: the browser won't let us read the video
+      }
+    }
+    topT.style.setProperty('--p', ease(win(t, TL.top)));
+    botT.style.setProperty('--p', ease(win(t, TL.bottom)));
+    var a1 = ease(win(t, TL.rule1)), a2 = ease(win(t, TL.rule2));
+    r1.style.transform = 'scaleX(' + a1 + ')'; r1.style.opacity = a1;
+    r2.style.transform = 'scaleX(' + a2 + ')'; r2.style.opacity = a2;
+    if (!lockup.classList.contains('still')) {
+      var f = ease(win(t, TL.fade));
+      lockup.style.opacity = 1 - f;
+      lockup.style.filter = f ? 'blur(' + (f * 3).toFixed(2) + 'px)' : '';
+    } else { lockup.style.opacity = ''; lockup.style.filter = ''; }
+    requestAnimationFrame(heroFrame);
+  }
+  function startHero() {
+    if (!html.classList.contains('motion') || !cx) { still(); return; }
+    try { hv.currentTime = 0; } catch (e) {}
+    var p = hv.play();
+    if (p && p.catch) p.catch(function () { still(); });
+    requestAnimationFrame(heroFrame);
+  }
+  if (!html.classList.contains('motion')) still();
 
   /* ---------- 1. Loading screen with the logo animation ---------- */
   var intro = $('intro'), iv = $('introVideo');
-  function afterIntro() { startMotion(); }
+  function afterIntro() { startMotion(); startHero(); }
   if (html.classList.contains('intro-on')) {
     var finished = false, started = false;
     var finish = function () {
       if (finished) return;
       finished = true;
-      try { sessionStorage.setItem('yae_intro', '1'); } catch (e) {}
       html.classList.add('intro-out');
       afterIntro();
       setTimeout(function () { html.classList.remove('intro-on', 'intro-out'); iv.pause(); intro.remove(); }, 800);
@@ -94,9 +148,14 @@ var CONFIG = {
     iv.addEventListener('ended', function () { setTimeout(finish, 450); });
     iv.addEventListener('error', finish);
     $('introSkip').addEventListener('click', finish);
-    $('introSound').addEventListener('click', function () { iv.muted = false; this.hidden = true; });
+    // Sound on: start the logo again from the beginning so it is heard in full
+    var cap = setTimeout(finish, 9000);
+    $('introSound').addEventListener('click', function () {
+      iv.muted = false; iv.currentTime = 0; iv.play().catch(function () {});
+      this.hidden = true;
+      clearTimeout(cap); cap = setTimeout(finish, 9000);
+    });
     setTimeout(function () { if (!started) finish(); }, 3500);   // slow network: don't hold the page
-    setTimeout(finish, 9000);
   } else {
     intro.remove();
     afterIntro();
@@ -123,7 +182,7 @@ var CONFIG = {
     window.addEventListener('resize', window.aimFrames);
 
     var reveal = '.head > :not(.script), .about-text > :not(.script), .studio-card, .story-photo, .story-text > :not(.script),' +
-      ' .value, .team-head > :not(.script), .person, .crew h3, .crew-item, .square, .founder-photo, .founder-copy > :not(.script),' +
+      ' .value, .team-head > :not(.script), .person, .crew h3, .crew-item, .who-title, .who-item, .founder-photo, .founder-copy > :not(.script),' +
       ' .services-head > :not(.script), .svc, .access-head, .access-list li, .step, .book-form, .ask-text > :not(.script), .ask-frame,' +
       ' .gift-cards, .gift-text > :not(.script), .cert-order, .contact-card, .social-wall, .map';
     all(reveal).forEach(function (el) { el.classList.add('rv'); });
