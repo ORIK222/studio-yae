@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Запис — студія «Яє»</title>
+<link rel="icon" href="assets/logo.png">
+<script>
+  // Booking now lives on the main page; keep old links (booking.html?spec=a) working
+  var map = { a: 'olena', b: 'ilona', c: 'anastasiia' };
+  var spec = new URLSearchParams(location.search).get('spec');
+  location.replace('index.html' + (spec ? '?spec=' + (map[spec] || spec) : '') + '#booking');
+</script>
+</head>
+<body>
+<p><a href="index.html#booking">Перейти до запису</a></p>
+</body>
+</html>
