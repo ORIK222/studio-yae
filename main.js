@@ -265,6 +265,11 @@ var CONFIG = {
   /* Sending: the button says «Надсилаємо…». Sent: the fields give way to a
      confirmation with a «send another» button. Failed: the answers stay in the
      form and a note under the button offers to retry, call or write an e-mail. */
+  // the studio's infinity sign; a brush-like stroke keeps running along it
+  var INF = '<svg class="inf-loader" viewBox="0 0 44 22" aria-hidden="true">' +
+    '<path class="inf-track" pathLength="100" d="M22 11C25.5 6.5 29 3.5 33.5 3.5 38 3.5 40.5 7 40.5 11S38 18.5 33.5 18.5C29 18.5 25.5 15.5 22 11S15 3.5 10.5 3.5C6 3.5 3.5 7 3.5 11s2.5 7.5 7 7.5c4.5 0 8-3 11.5-7.5z"/>' +
+    '<path class="inf-run" pathLength="100" d="M22 11C25.5 6.5 29 3.5 33.5 3.5 38 3.5 40.5 7 40.5 11S38 18.5 33.5 18.5C29 18.5 25.5 15.5 22 11S15 3.5 10.5 3.5C6 3.5 3.5 7 3.5 11s2.5 7.5 7 7.5c4.5 0 8-3 11.5-7.5z"/></svg>';
+
   function send(form, subject, lines, fieldsId, okId) {
     var body = lines.filter(Boolean).join('\n');
     var fields = $(fieldsId), ok = $(okId);
@@ -277,7 +282,7 @@ var CONFIG = {
       btn.disabled = on;
       btn.classList.toggle('is-sending', on);
       btn.setAttribute('aria-busy', on ? 'true' : 'false');
-      if (on) { btn.dataset.label = btn.innerHTML; btn.textContent = en() ? 'Sending…' : 'Надсилаємо…'; }
+      if (on) { btn.dataset.label = btn.innerHTML; btn.innerHTML = INF + '<span>' + (en() ? 'Sending…' : 'Надсилаємо…') + '</span>'; }
       else if (btn.dataset.label) { btn.innerHTML = btn.dataset.label; }
     }
     function done() {
