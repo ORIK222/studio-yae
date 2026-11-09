@@ -303,6 +303,9 @@ var CONFIG = {
     err.hidden = true;
     if (!CONFIG.formEndpoint) { fail(); return; }
     busy(true);
+    // test mode, nothing is sent: ?formtest shows success after 4 s, ?formtest=fail shows the error
+    var test = /[?&]formtest(=([^&]*))?/.exec(location.search);
+    if (test) { setTimeout(test[2] === 'fail' ? fail : done, 4000); return; }
     var ctrl = window.AbortController ? new AbortController() : null;
     var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 20000);
     fetch(CONFIG.formEndpoint, {
