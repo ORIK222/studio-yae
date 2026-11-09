@@ -572,11 +572,9 @@
               <button type="submit" class="btn" data-en="Send request">Надіслати заявку</button>
               <span class="muted" data-en="The specialist will contact you to agree on the date and time.">Фахівчиня сама зв’яжеться з вами, щоб узгодити дату й час.</span>
             </div>
+            <div class="form-err wide" role="alert" hidden><span data-en="Could not send — check your connection and try again. Your answers are kept. Or contact us directly:">Не вдалося надіслати — перевірте інтернет і спробуйте ще раз, введені дані збережено. Або зв’яжіться з нами напряму:</span> <a href="tel:+380678801838">+380 67 880 18 38</a> · <a class="err-mail" href="mailto:studioiamm8@gmail.com" data-en="send an email">написати листа</a></div>
           </div>
-          <div class="form-ok" id="book-ok" hidden>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A1718" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
-            <span class="ok-text" data-en="Thank you! The specialist will contact you shortly to agree on the date and time.">Дякуємо! Фахівчиня зв’яжеться з вами найближчим часом, щоб узгодити дату й час.</span>
-          </div>
+          <div class="form-ok" id="book-ok" tabindex="-1" hidden><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A1718" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div class="ok-body"><b class="ok-title" data-en="Request sent">Заявку надіслано</b><span class="ok-text" data-en="Thank you! The specialist will contact you shortly to agree on the date and time.">Дякуємо! Фахівчиня зв’яжеться з вами найближчим часом, щоб узгодити дату й час.</span><button type="button" class="form-again" data-en="Send another request">Надіслати ще одну заявку</button></div></div>
         </form>
       </div>
     </div>
@@ -653,8 +651,9 @@
               <textarea id="co-msg" name="comment" rows="3" placeholder="Наприклад, текст привітання або бажана дата" data-en-ph="For example, a greeting or a preferred date"></textarea>
             </div>
             <button type="submit" class="btn" data-en="Order a certificate">Замовити сертифікат</button>
+            <div class="form-err" role="alert" hidden><span data-en="Could not send — check your connection and try again. Your answers are kept. Or contact us directly:">Не вдалося надіслати — перевірте інтернет і спробуйте ще раз, введені дані збережено. Або зв’яжіться з нами напряму:</span> <a href="tel:+380678801838">+380 67 880 18 38</a> · <a class="err-mail" href="mailto:studioiamm8@gmail.com" data-en="send an email">написати листа</a></div>
           </div>
-          <div class="form-ok" id="cert-ok" hidden><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A1718" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span class="ok-text" data-en="Thank you! We will contact you to confirm the certificate.">Дякуємо! Ми зв’яжемося з вами, щоб підтвердити сертифікат.</span></div>
+          <div class="form-ok" id="cert-ok" tabindex="-1" hidden><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A1718" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div class="ok-body"><b class="ok-title" data-en="Order sent">Замовлення надіслано</b><span class="ok-text" data-en="Thank you! We will contact you to confirm the certificate.">Дякуємо! Ми зв’яжемося з вами, щоб підтвердити сертифікат.</span><button type="button" class="form-again" data-en="Order another certificate">Замовити ще один сертифікат</button></div></div>
         </form>
       </div></div>
     </div>
@@ -690,8 +689,9 @@
             </div>
             <label class="check"><input type="checkbox" required><span data-en="I agree to the processing of my personal data under the &lt;a href=&quot;#privacy&quot; class=&quot;privacy-link&quot;&gt;privacy policy&lt;/a&gt;">Погоджуюся на обробку персональних даних відповідно до <a href="#privacy" class="privacy-link">політики конфіденційності</a></span></label>
             <button type="submit" class="btn" data-en="Send">Надіслати</button>
+            <div class="form-err" role="alert" hidden><span data-en="Could not send — check your connection and try again. Your answers are kept. Or contact us directly:">Не вдалося надіслати — перевірте інтернет і спробуйте ще раз, введені дані збережено. Або зв’яжіться з нами напряму:</span> <a href="tel:+380678801838">+380 67 880 18 38</a> · <a class="err-mail" href="mailto:studioiamm8@gmail.com" data-en="send an email">написати листа</a></div>
           </div>
-          <div class="form-ok" id="ask-ok" hidden><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A1718" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span class="ok-text" data-en="Thank you! The administrator will write to you soon.">Дякуємо! Адміністратор напише вам найближчим часом.</span></div>
+          <div class="form-ok" id="ask-ok" tabindex="-1" hidden><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A1718" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div class="ok-body"><b class="ok-title" data-en="Message sent">Повідомлення надіслано</b><span class="ok-text" data-en="Thank you! The administrator will write to you soon.">Дякуємо! Адміністратор напише вам найближчим часом.</span><button type="button" class="form-again" data-en="Write again">Написати ще раз</button></div></div>
         </form>
       </div></div>
     </div>

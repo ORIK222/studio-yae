@@ -2,8 +2,8 @@
    formEndpoint: the form service that forwards requests to the studio's e-mail.
    FormSubmit needs no account: the very first request sends an activation
    letter to the address below; once someone clicks the link in it, every form
-   arrives in that inbox. Until then (or if the service is down) a form opens a
-   ready e-mail to the studio in the visitor's mail app instead.
+   arrives in that inbox. If sending fails, the form keeps the answers and shows
+   a note with the phone number and an e-mail link.
    formKey: only for services that need an access key (e.g. Web3Forms). */
 var CONFIG = {
   email: 'studioiamm8@gmail.com',
@@ -244,7 +244,7 @@ var CONFIG = {
   });
   dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
 
-  /* ---------- Forms: to CONFIG.formEndpoint if set, otherwise a ready e-mail ---------- */
+  /* ---------- Forms: sent to CONFIG.formEndpoint ---------- */
   function label(form, name) {
     var input = form.querySelector('[name="' + name + '"]');
     if (!input) return name;
@@ -262,28 +262,47 @@ var CONFIG = {
   function line(k, v) { return v ? k + ': ' + v : null; }
   function val(f, n) { return (f.elements[n].value || '').trim(); }
 
+  /* Sending: the button says «Надсилаємо…». Sent: the fields give way to a
+     confirmation with a «send another» button. Failed: the answers stay in the
+     form and a note under the button offers to retry, call or write an e-mail. */
   function send(form, subject, lines, fieldsId, okId) {
     var body = lines.filter(Boolean).join('\n');
-    var ok = $(okId);
-    function done(viaMail) {
-      $(fieldsId).hidden = true;
+    var fields = $(fieldsId), ok = $(okId);
+    var btn = form.querySelector('button[type=submit]');
+    var err = form.querySelector('.form-err');
+    var mailHref = 'mailto:' + CONFIG.email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    if (btn.disabled) return;
+
+    function busy(on) {
+      btn.disabled = on;
+      btn.classList.toggle('is-sending', on);
+      btn.setAttribute('aria-busy', on ? 'true' : 'false');
+      if (on) { btn.dataset.label = btn.innerHTML; btn.textContent = en() ? 'Sending…' : 'Надсилаємо…'; }
+      else if (btn.dataset.label) { btn.innerHTML = btn.dataset.label; }
+    }
+    function done() {
+      busy(false);
+      form.reset();
+      fields.hidden = true;
       ok.hidden = false;
-      if (viaMail) {
-        ok.querySelector('.ok-text').textContent = en()
-          ? 'We have opened an e-mail in your mail app — press «Send» to finish. If it did not open, write to ' + CONFIG.email + '.'
-          : 'Ми відкрили лист у вашій пошті — натисніть «Надіслати», щоб завершити. Якщо лист не відкрився, напишіть нам на ' + CONFIG.email + '.';
-      }
+      ok.focus({ preventScroll: true });
       ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-    function mail() {
-      location.href = 'mailto:' + CONFIG.email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-      done(true);
+    function fail() {
+      busy(false);
+      err.querySelector('.err-mail').href = mailHref;
+      err.hidden = false;
+      err.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
-    if (!CONFIG.formEndpoint) { mail(); return; }
-    var btn = form.querySelector('button[type=submit]');
-    btn.disabled = true;
+
+    err.hidden = true;
+    if (!CONFIG.formEndpoint) { fail(); return; }
+    busy(true);
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 20000);
     fetch(CONFIG.formEndpoint, {
       method: 'POST',
+      signal: ctrl ? ctrl.signal : undefined,
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify({
         access_key: CONFIG.formKey || undefined,
@@ -291,12 +310,24 @@ var CONFIG = {
         from_name: 'Сайт студії «Яє»', message: body
       })
     }).then(function (r) {
-      // FormSubmit answers 200 with success "false" until the inbox is activated
+      // FormSubmit answers 200 with success "false" while the inbox is not activated
       return r.json().catch(function () { return {}; }).then(function (j) {
-        if (r.ok && j.success !== false && j.success !== 'false') done(false); else mail();
+        if (r.ok && j.success !== false && j.success !== 'false') done(); else fail();
       });
-    }).catch(mail).then(function () { btn.disabled = false; });
+    }).catch(fail).then(function () { clearTimeout(timer); });
   }
+
+  all('.form-again').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var form = b.closest('form');
+      form.querySelector('.form-ok').hidden = true;
+      var fields = form.firstElementChild;
+      fields.hidden = false;
+      var first = fields.querySelector('input:not([type=hidden]),textarea,select');
+      if (first) first.focus({ preventScroll: true });
+      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
 
   $('book-form').addEventListener('submit', function (e) {
     e.preventDefault();

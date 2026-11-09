@@ -300,7 +300,18 @@ html.intro-out .intro{opacity:0;pointer-events:none}
 .book-submit{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
 .book-submit .muted{font-size:18px;font-style:italic}
 .form-ok{background:var(--sand);border-radius:14px;padding:16px 18px;font-weight:600;display:flex;align-items:center;gap:10px}
-.form-ok svg{flex-shrink:0}
+.form-ok{align-items:flex-start;padding:22px 24px;outline:none}
+.form-ok svg{flex-shrink:0;margin-top:3px}
+.ok-body{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.ok-title{font-size:22px}
+.ok-body .ok-text{font-weight:400}
+.form-again{margin-top:8px;background:none;border:0;padding:0;font:inherit;font-weight:700;color:var(--green);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.form-again:hover{color:var(--green-d)}
+.form-err{background:#FBE9E4;border-radius:14px;padding:14px 18px;font-size:17px;line-height:1.45}
+.form-err a{font-weight:700;white-space:nowrap}
+.btn.is-sending{opacity:1;cursor:progress;gap:10px}
+.btn.is-sending::before{content:"";width:16px;height:16px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 
 /* ---------- 13. Anonymous ---------- */
 .two{display:flex;flex-wrap:wrap;gap:48px;align-items:center}
